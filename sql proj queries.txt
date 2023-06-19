@@ -1,0 +1,13 @@
+create table EMP(empid varchar(10) primary key,first_name varchar(20) not null,last_name varchar(20),pref1 varchar(20),pref2 varchar(20),pref3 varchar(20),pref4 varchar(20),
+pref5 varchar(20),subject_alloted1 varchar(20),subject_alloted2 varchar(20),subject_alloted3 varchar(20),lab_alloted1 varchar(10),lab_alloted2 varchar(10),
+lab_alloted3 varchar(10),lab_alloted4 varchar(10),lab_alloted5 varchar(10),lab_alloted6 varchar(10));
+
+
+alter table IT_secA change FACULTY_ID FACULTY_ID varchar(10) after SUBJECT_NAME;
+
+
+
+create table it_SecC_semIV(subject_code varchar(20),subject_name varchar(40),
+empid varchar(20) references EMP,
+ename varchar(20),credits int,time_units int,batch varchar(5), room_number varchar(10),
+semester int default 4,section varchar(10) default "IT-C");
