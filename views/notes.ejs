@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes</title>
+  <style>
+    body {
+      background-image: url('/assets/pic4.jpg');
+      background-size: cover;
+      text-align: center;
+      background-attachment: fixed;
+    }
+  </style>
+</head>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.get('/req_status',{
+
+    })
+        .then(response=>{
+            const option = response.data;
+            if(option.name==undefined){
+                location.href = "/";
+            }
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+</script>
+<body>
+  <br><br><br>
+  <h1 style="color: #323234; text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);"><b>Notes</b></h1>
+
+  <textarea id="inpnotes" style="font-size: 20px" name="note" rows="28" cols="68"
+    placeholder="Enter you notes here...."></textarea>
+  <br>
+  <button
+    style="margin: 5px;padding: 5px 10px;background-color: #c6530b;color: #fff;cursor: pointer;border-radius: 5px;height:40px;width:100px;font-size: 20px;"
+    ; id="notesubmit" type="submit" onclick="send()">Save</button>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    const area = document.getElementById("inpnotes");
+    axios.get('/getnotes', {
+
+    })
+      .then(response => {
+        const options = response.data;
+        area.innerHTML = options[0].notes;
+      })
+      .catch(error => {
+        console.error('error', error);
+      });
+
+    function send() {
+      const a = document.getElementById("inpnotes");
+      const text = a.value;
+      const d = document.getElementById("notesubmit");
+      axios.get('/sendnotes', {
+        params: {
+          text: text
+        }
+      })
+        .then(response => {
+          const options = response.data;
+          d.innerHTML = "Success";
+        })
+        .catch(error => {
+          console.error('error', error);
+        });
+    }
+  </script>
+</body>
+
+</html>

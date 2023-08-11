@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time table</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+        integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/askfortt.css">
+</head>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.get('/req_status',{
+
+    })
+        .then(response=>{
+            const option = response.data;
+            if(option.name==undefined){
+                location.href = "/";
+            }
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+</script>
+<body>
+    <header class="tt">
+        <a href="/home" class="logo">Teacher's Desk</a>
+        <img class="tt_logo3" src="/assets/manipal_logo.png" alt="manipal_logo">
+        <div class="toggle">
+        </div>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/home/time_table">Time Table</a></li>
+            <li><a href="/Notes">Notes</a></li>
+            <li><a href="/Admin">Admin</a></li>
+            <li><a href="/Attainment">Attainment</a></li>
+            <li><a href="/">Logout</a></li>
+
+        </ul>
+    </header>
+    <br><br><br>
+    <br>
+    <br>
+    <br>
+    <h2>CHOOSE TYPE OF TIME TABLE</h1>
+        <div>
+            <form action="/home/time_table/mon_morlab_tt" method="POST">
+                <button type="submit">MAKE MIRROR</button>
+                <select name="Sec" id="Sec"></select>
+                <br>
+            </form>
+            <form action="/home/time_table/mon_evelab_tt" method="POST">
+                <button type="submit">MAKE REGULAR</button>
+                <select name="Sec1" id="Sec1"></select>
+            </form>
+            <h2>SHOW TIME TABLES</h1>
+
+                <form action="/sec_check" method="POST">
+                    <select id="sections" name="section"></select>
+                    <button type="submit" id="but">SHOW</button>
+                </form>
+                <h2>EDIT TIME TABLES</h2>
+                <form action="/edit" method="POST">
+                    <select id="edit_sections" name="edit_section"></select>
+                    <button type="submit" id="but">EDIT</button>
+                </form>
+
+        </div>
+        <div>
+            <h2>SHOW TIME TABLE SPECIFIC TO FACULTY</h1>
+                <form action="/home/time_table/factt" method="POST">
+                    <select id="fac_select" name="faculty"></select>
+                    <button type="submit">SHOW</button>
+                </form>
+        </div>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+            const dd = document.getElementById('sections');
+            const se1 = document.getElementById('Sec1');
+            const se = document.getElementById('Sec');
+            const fdd = document.getElementById('fac_select');
+            const esec = document.getElementById('edit_sections');
+            var disabledOption = document.createElement('option');
+            disabledOption.value = 'SECTION';
+            disabledOption.selected = true;
+            disabledOption.setAttribute('disabled', 'disabled');
+            disabledOption.text = 'SECTION';
+
+            var disabledOption1 = document.createElement('option');
+            disabledOption1.value = 'SECTION';
+            disabledOption1.selected = true;
+            disabledOption1.setAttribute('disabled', 'disabled');
+            disabledOption1.text = 'SECTION';
+
+            var disabledOption2 = document.createElement('option');
+            disabledOption2.value = 'SECTION';
+            disabledOption2.selected = true;
+            disabledOption2.setAttribute('disabled', 'disabled');
+            disabledOption2.text = 'SECTION';
+
+            var disabledOption3 = document.createElement('option');
+            disabledOption3.value = 'SECTION';
+            disabledOption3.selected = true;
+            disabledOption3.setAttribute('disabled', 'disabled');
+            disabledOption3.text = 'SECTION';
+
+            var disabledOptionfac = document.createElement('option');
+            disabledOptionfac.value = 'FACULTY';
+            disabledOptionfac.selected = true;
+            disabledOptionfac.setAttribute('disabled', 'disabled');
+            disabledOptionfac.text = 'FACULTY';
+            fdd.innerHTML = '';
+            fdd.appendChild(disabledOptionfac);
+
+            axios.get('/faclist', {
+
+            })
+                .then(response => {
+                    const options = response.data;
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        fdd.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+            // axios.get('/secmor', {
+
+            // })
+            //     .then(response => {
+            //         const options = response.data;
+            //         se.innerHTML = '';
+            //         se.appendChild(disabledOption1);
+            //         options.forEach(option => {
+            //             const optionElement = document.createElement('option');
+            //             optionElement.text = option.TABLE_NAME;
+            //             optionElement.value = option.TABLE_NAME;
+            //             se.appendChild(optionElement);
+            //         });
+
+            //     })
+            //     .catch(error => {
+            //         console.error('Error: ', error);
+            //     })
+            // axios.get('/seceve', {
+
+            // })
+            //     .then(response => {
+            //         const options = response.data;
+            //         se1.innerHTML = '';
+            //         se1.appendChild(disabledOption2);
+            //         options.forEach(option => {
+            //             const optionElement = document.createElement('option');
+            //             optionElement.text = option.TABLE_NAME;
+            //             optionElement.value = option.TABLE_NAME;
+            //             se1.appendChild(optionElement);
+            //         });
+
+            //     })
+            //     .catch(error => {
+            //         console.error('Error: ', error);
+            //     })
+            axios.get('/sec', {
+
+            })
+                .then(response => {
+                    const options = response.data;
+                    dd.innerHTML = '';
+                    dd.appendChild(disabledOption);
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.TABLE_NAME;
+                        optionElement.text = option.TABLE_NAME;
+                        dd.appendChild(optionElement);
+                    });
+                    se.innerHTML = '';
+                    se.appendChild(disabledOption1);
+                    options.forEach(option => {
+                        axios.get('/ret', {
+                            params: {
+                                secti: option.TABLE_NAME,
+                            }
+                        })
+                            .then(response => {
+                                const op = response.data;
+                                if (op[0].type == "mor") {
+                                    const optionElement = document.createElement('option');
+                                    optionElement.text = option.TABLE_NAME;
+                                    optionElement.value = option.TABLE_NAME;
+                                    se.appendChild(optionElement);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error: ', error);
+                            })
+
+                    });
+                    se1.innerHTML = '';
+                    se1.appendChild(disabledOption2);
+                    options.forEach(option => {
+                        axios.get('/ret', {
+                            params: {
+                                secti: option.TABLE_NAME,
+                            }
+                        })
+                            .then(response => {
+                                const op = response.data;
+                                if (op[0].type == "eve") {
+                                    const optionElement = document.createElement('option');
+                                    optionElement.text = option.TABLE_NAME;
+                                    optionElement.value = option.TABLE_NAME;
+                                    se1.appendChild(optionElement);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error: ', error);
+                            })
+
+                    });
+                    esec.innerHTML = '';
+                    esec.appendChild(disabledOption3);
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.text = option.TABLE_NAME;
+                        optionElement.value = option.TABLE_NAME;
+                        esec.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                })
+        </script>
+</body>
+
+</html>

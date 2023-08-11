@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+        integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/modify.css">
+</head>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.get('/req_status',{
+
+    })
+        .then(response=>{
+            const option = response.data;
+            if(option.name==undefined){
+                location.href = "/";
+            }
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+</script>
+<body>
+    <header class="tt">
+        <a href="/home" class="logo">Teacher's Desk</a>
+        <img class="tt_logo2" src="/assets/manipal_logo.png" alt="manipal_logo">
+        <div class="toggle">
+        </div>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/home/time_table">Time Table</a></li>
+            <li><a href="/Notes">Notes</a></li>
+            <li><a href="/Admin">Admin</a></li>
+            <li><a href="/Attainment">Attainment</a></li>
+            <li><a href="/">Logout</a></li>
+        </ul>
+    </header>
+    <br><br>
+    <div class="faculty">
+
+        <h1>FACULTY MODIFY</h1>
+        <h2>Faculty Add:-</h2>
+        <h3>Faculty Name<input type="text" id="facname">
+            Short Form<input type="text" id="facshort"><br>
+            Email<input type="text" id="facemail">
+            EID<input type="text" id="facid"><br>
+            <button type="submit" id="addfac">ADD</button><br><label id="lab1"></label><br>
+            <h2>Faculty Delete:-</h2>
+            Name<select id="sel1"></select>
+            Email<select id="sel2"></select><br>
+            <button type="submit" id="del1">DELETE</button><label id="lab2"></label>
+        </h3>
+        <br>
+
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const fn = document.getElementById('facname');
+        const fs = document.getElementById('facshort');
+        const em = document.getElementById('facemail');
+        const id = document.getElementById('facid');
+        const r1 = document.getElementById('addfac');
+
+        const sel1 = document.getElementById('sel1');
+        const sel2 = document.getElementById('sel2');
+        const del1 = document.getElementById('del1');
+
+        r1.addEventListener('click', () => {
+            const name = fn.value;
+            const short = fs.value;
+            const email = em.value;
+            const fid = id.value;
+            axios.get('/add', {
+                params: {
+                    name: name,
+                    short: short,
+                    email: email,
+                    fid: fid
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    document.getElementById('lab1').innerHTML = options.result1;
+                    setTimeout(() => { document.getElementById('lab1').innerHTML = ""; }, 2000);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('lab1').innerHTML = 'Error';
+
+                });
+        });
+
+        var disabledOptionsel = document.createElement('option');
+        disabledOptionsel.value = '';
+        disabledOptionsel.selected = true;
+        disabledOptionsel.setAttribute('disabled', 'disabled');
+        disabledOptionsel.text = 'Name';
+        axios.get('/faclist', {
+
+        })
+            .then(response => {
+                const options = response.data;
+                sel1.innerHTML = '';
+                sel1.appendChild(disabledOptionsel);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.name;
+                    optionElement.value = option.value;
+                    sel1.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error :', error);
+            })
+        var disabledOptionsel2 = document.createElement('option');
+        disabledOptionsel2.value = '';
+        disabledOptionsel2.selected = true;
+        disabledOptionsel2.setAttribute('disabled', 'disabled');
+        disabledOptionsel2.text = 'Emails';
+        axios.get('/emlist', {
+
+        })
+            .then(response => {
+                const options = response.data;
+                sel2.innerHTML = '';
+                sel2.appendChild(disabledOptionsel2);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.user_name;
+                    sel2.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error :', error);
+            })
+        del1.addEventListener('click', () => {
+            const name = sel1.options[sel1.selectedIndex].text;
+            const email = sel2.options[sel2.selectedIndex].text;
+            if(name=="Name"){
+                document.getElementById('lab2').innerHTML = "DO NOT LEAVE FIELDS BLANK";
+                        setTimeout(() => { document.getElementById('lab2').innerHTML = ""; }, 2000);
+            }
+            else{
+                axios.get('/del', {
+                    params: {
+                        name: name,
+                        email: email,
+                    }
+                })
+                    .then(response => {
+                        const options = response.data;
+                        document.getElementById('lab2').innerHTML = options.result1;
+                        setTimeout(() => { document.getElementById('lab2').innerHTML = ""; }, 2000);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+        });
+    </script>
+</body>
+
+</html>

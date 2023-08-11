@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN:Manipal</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+        integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/admin.css">
+</head>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.get('/req_status',{
+
+    })
+        .then(response=>{
+            const option = response.data;
+            if(option.name==undefined){
+                location.href = "/";
+            }
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+</script>
+<body>
+    <header class="tt">
+        <a href="/home" class="logo">Teacher's Desk</a>
+        <img class="tt_logo2" src="/assets/manipal_logo.png" alt="manipal_logo">
+        <div class="toggle">
+        </div>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/home/time_table">Time Table</a></li>
+            <li><a href="/Notes">Notes</a></li>
+            <li><a href="/Admin">Admin</a></li>
+            <li><a href="/Attainment">Attainment</a></li>
+            <li><a href="/">Logout</a></li>
+        </ul>
+    </header>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="faculty">
+        <button><a href="/facload">CHECK FACULTY LOAD</a></button>
+        <br>
+        <button><a href="/labfreedisp">CHECK LAB OCCUPANCY</a></button>
+        <br>
+    </div>
+</body>
+
+</html>

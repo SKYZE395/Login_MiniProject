@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Faculty_Time_Table</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+        integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/first_style.css">
+    <link rel="stylesheet" href="/assets/factt.css">
+</head>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.get('/req_status',{
+
+    })
+        .then(response=>{
+            const option = response.data;
+            if(option.name==undefined){
+                location.href = "/";
+            }
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+</script>
+<body>
+    <header class="tt">
+        <a href="/home" class="logo no-print">Teacher's Desk</a>
+        <img class="tt_logo3" src="/assets/manipal_logo.png" alt="manipal_logo">
+        <div class="toggle">
+        </div>
+        <ul>
+            <li><a href="/home2" class="no-print">Home</a></li>
+            <li><a href="/home2/time_table" class="no-print">Time Table</a></li>
+            <li><a href="/Preferences" class="no-print">Preferences</a></li>
+            <li><a href="/Notes" class="no-print">Notes</a></li>
+            <li><a href="/Attainment" class="no-print">Attainment</a></li>
+            <li><a href="/" class="no-print">Logout</a></li>
+        </ul>
+    </header>
+    <p id="fac" name="faculty">
+        <%=p1 %>``````````````
+    </p>
+    <div class="container" style="text-align: center;">
+        <h1 class="text-center display-4">Time Table REGULAR</h1>
+        <div class="row">
+            <h6 class="col-1 border">DAY</h6>
+            <h6 class="col-1 border">08:00-09:00</h6>
+            <h6 class="col-1 border">09:00-10:00</h6>
+            <h6 class="col-1 border">10:00-10:30</h6>
+            <h6 class="col-1 border">10:30-11:30</h6>
+            <h6 class="col-1 border">11:30-12:30</h6>
+            <h6 class="col-1 border">12:30-01:00</h6>
+            <h6 class="col-1 border">01:00-02:00</h6>
+            <h6 class="col-1 border">02:00-03:00</h6>
+            <h6 class="col-1 border">03:00-03:30</h6>
+            <h6 class="col-1 border">03:30-04:30</h6>
+        </div>
+        <div class="row">
+            <div class="col-1 border">MON</div>
+            <div class="col-1 border" id="s1-1">SUB-1</div>
+            <div class="col-1 border" id="s2-1">SUB-2</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s3-1">SUB-3</div>
+            <div class="col-1 border" id="s5-1">SUB-5</div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-3 border">
+                <div id="l1-1">LAB-1-1</div>
+                <div id="l1-2">LAB-1-2</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 border">TUE</div>
+            <div class="col-1 border"></div>
+            <div class="col-3 border">
+                <div id="l2-1">LAB-2-1</div>
+                <div id="l2-2">LAB-2-2</div>
+            </div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-1 border" id="s4-1">SUB-4</div>
+            <div class="col-1 border" id="s5-2">SUB-5</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s6-1">SUB-6</div>
+        </div>
+        <div class="row">
+            <div class="col-1 border">WED</div>
+            <div class="col-1 border" id="s3-2">SUB-3</div>
+            <div class="col-1 border" id="s4-2">SUB-4</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s5-3">SUB-5</div>
+            <div class="col-1 border" id="s1-2">SUB-1</div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-3 border">
+                <div id="l3-1">LAB-3-1</div>
+                <div id="l3-2">LAB-3-2</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 border">THU</div>
+            <div class="col-1 border"></div>
+            <div class="col-3 border">
+                <div id="l4-1">LAB-4-1</div>
+                <div id="l4-2">LAB-4-2</div>
+            </div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-1 border" id="s6-2">SUB-6</div>
+            <div class="col-1 border" id="s1-3">SUB-1</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s2-2">SUB-2</div>
+        </div>
+        <div class="row">
+            <div class="col-1 border">FRI</div>
+            <div class="col-1 border" id="s5-4">SUB-5</div>
+            <div class="col-1 border" id="s6-3">SUB-6</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s1-4">SUB-1</div>
+            <div class="col-1 border" id="s3-3">SUB-3</div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-3 border">
+                <div id="l5-1">LAB-5-1</div>
+                <div id="l5-2">LAB-5-2</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 border">SAT</div>
+            <div class="col-1 border"></div>
+            <div class="col-3 border">
+                <div id="l6-1">LAB-6-1</div>
+                <div id="l6-2">LAB-6-2</div>
+            </div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-1 border" id="s2-3">SUB-2</div>
+            <div class="col-1 border" id="s3-4">SUB-3</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s4-3">SUB-4</div>
+        </div>
+    </div>
+    <br>
+    <div class="container" style="text-align: center;">
+        <h1 class="text-center display-4">Time Table MIRROR</h1>
+        <div class="row">
+            <h6 class="col-1 border">DAY</h6>
+            <h6 class="col-1 border">08:00-09:00</h6>
+            <h6 class="col-1 border">09:00-10:00</h6>
+            <h6 class="col-1 border">10:00-10:30</h6>
+            <h6 class="col-1 border">10:30-11:30</h6>
+            <h6 class="col-1 border">11:30-12:30</h6>
+            <h6 class="col-1 border">12:30-01:00</h6>
+            <h6 class="col-1 border">01:00-02:00</h6>
+            <h6 class="col-1 border">02:00-03:00</h6>
+            <h6 class="col-1 border">03:00-03:30</h6>
+            <h6 class="col-1 border">03:30-04:30</h6>
+        </div>
+        <div class="row">
+            <div class="col-1 border">MONDAY</div>
+            <div class="col-1 border"></div>
+            <div class="col-3 border">
+                <div id="l1-1_2">LAB-1-1</div>
+                <div id="l1-2_2">LAB-1-2</div>
+            </div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-1 border" id="s1-1_2">SUB-1</div>
+            <div class="col-1 border" id="s2-1_2">SUB-2</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s3-1_2">SUB-3</div>
+        </div>
+        <div class="row">
+            <div class="col-1 border">TUESDAY</div>
+            <div class="col-1 border" id="s4-1_2">SUB-4</div>
+            <div class="col-1 border" id="s5-1_2">SUB-5</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s6-1_2">SUB-6</div>
+            <div class="col-1 border" id="s1-2_2">SUB-1</div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-3 border">
+                <div id="l2-1_2">LAB-2-1</div>
+                <div id="l2-2_2">LAB-2-2</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 border">WEDNES-DAY</div>
+            <div class="col-1 border"></div>
+            <div class="col-3 border">
+                <div id="l3-1_2">LAB-3-1</div>
+                <div id="l3-2_2">LAB-3-2</div>
+            </div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-1 border" id="s3-2_2">SUB-3</div>
+            <div class="col-1 border" id="s4-2_2">SUB-4</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s5-2_2">SUB-5</div>
+        </div>
+        <div class="row">
+            <div class="col-1 border">THURS-DAY</div>
+            <div class="col-1 border" id="s6-2_2">SUB-6</div>
+            <div class="col-1 border" id="s1-3_2">SUB-1</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s2-2_2">SUB-2</div>
+            <div class="col-1 border" id="s3-3_2">SUB-3</div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-3 border">
+                <div id="l4-1_2">LAB-4-1</div>
+                <div id="l4-2_2">LAB-4-2</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 border">FRIDAY</div>
+            <div class="col-1 border"></div>
+            <div class="col-3 border">
+                <div id="l5-1_2">LAB-5-1</div>
+                <div id="l5-2_2">LAB-5-2</div>
+            </div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-1 border" id="s5-3_2">SUB-5</div>
+            <div class="col-1 border" id="s6-3_2">SUB-6</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s1-4_2">SUB-1</div>
+        </div>
+        <div class="row">
+            <div class="col-1 border">SATUR-DAY</div>
+            <div class="col-1 border" id="s2-3_2">SUB-2</div>
+            <div class="col-1 border" id="s3-4_2">SUB-3</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s4-3_2">SUB-4</div>
+            <div class="col-1 border" id="s5-4_2">SUB-5</div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-3 border">
+                <div id="l6-1_2">LAB-6-1</div>
+                <div id="l6-2_2">LAB-6-2</div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <button onclick="window.print()" class="no-print">DOWNLOAD OR PRINT</button>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const m1 = document.getElementById('s1-1');
+        const m2 = document.getElementById('s2-1');
+        const m3 = document.getElementById('s3-1');
+        const m4 = document.getElementById('s5-1');
+        const m5 = document.getElementById('s1-1_2');
+        const m6 = document.getElementById('s2-1_2');
+        const m7 = document.getElementById('s3-1_2');
+        //const m8 = document.getElementById('s4-1_2');
+        const ml1 = document.getElementById('l1-1');//evening labs
+        const ml2 = document.getElementById('l1-2');//evening labs
+        const ml1_2 = document.getElementById('l1-1_2');//morning labs
+        const ml2_2 = document.getElementById('l1-2_2');//morning labs
+
+        const t5 = document.getElementById('s4-1');
+        const t6 = document.getElementById('s5-2');
+        const t7 = document.getElementById('s6-1');
+        //const t8 = document.getElementById('s2-2');
+        const t1 = document.getElementById('s4-1_2');
+        const t2 = document.getElementById('s5-1_2');
+        const t3 = document.getElementById('s6-1_2');
+        const t4 = document.getElementById('s1-2_2');
+        const tl1 = document.getElementById('l2-1');//morning labs
+        const tl2 = document.getElementById('l2-2');//morning labs
+        const tl1_2 = document.getElementById('l2-1_2');//evening labs
+        const tl2_2 = document.getElementById('l2-2_2');//evening labs
+
+        const w1 = document.getElementById('s3-2');
+        const w2 = document.getElementById('s4-2');
+        const w3 = document.getElementById('s5-3');
+        const w4 = document.getElementById('s1-2');
+        const w5 = document.getElementById('s3-2_2');
+        const w6 = document.getElementById('s4-2_2');
+        const w7 = document.getElementById('s5-2_2');
+        //const w8 = document.getElementById('s6-2_2');
+        const wl1 = document.getElementById('l3-1');//evening labs
+        const wl2 = document.getElementById('l3-2');//evening labs
+        const wl1_2 = document.getElementById('l3-1_2');//morning labs
+        const wl2_2 = document.getElementById('l3-2_2');//morning labs
+
+        const th5 = document.getElementById('s6-2');
+        const th6 = document.getElementById('s1-3');
+        const th7 = document.getElementById('s2-2');
+        //const th8 = document.getElementById('s4-3');
+        const th1 = document.getElementById('s6-2_2');
+        const th2 = document.getElementById('s1-3_2');
+        const th3 = document.getElementById('s2-2_2');
+        const th4 = document.getElementById('s3-3_2');
+        const thl1 = document.getElementById('l4-1');//morning labs
+        const thl2 = document.getElementById('l4-2');//morning labs
+        const thl1_2 = document.getElementById('l4-1_2');//evening labs
+        const thl2_2 = document.getElementById('l4-2_2');//evening labs
+
+        const f1 = document.getElementById('s5-4');
+        const f2 = document.getElementById('s6-3');
+        const f3 = document.getElementById('s1-4');
+        const f4 = document.getElementById('s3-3');
+        const f5 = document.getElementById('s5-3_2');
+        const f6 = document.getElementById('s6-3_2');
+        const f7 = document.getElementById('s1-4_2');
+        //const f8 = document.getElementById('s2-4_2');
+        const fl1 = document.getElementById('l5-1');//evening labs
+        const fl2 = document.getElementById('l5-2');//evening labs
+        const fl1_2 = document.getElementById('l5-1_2');//morning labs
+        const fl2_2 = document.getElementById('l5-2_2');//morning labs
+
+        const s5 = document.getElementById('s2-3');
+        const s6 = document.getElementById('s3-4');
+        const s7 = document.getElementById('s4-3');
+        //const s8 = document.getElementById('s6-4');
+        const s1 = document.getElementById('s2-3_2');
+        const s2 = document.getElementById('s3-4_2');
+        const s3 = document.getElementById('s4-3_2');
+        const s4 = document.getElementById('s5-4_2');
+        const sl1 = document.getElementById('l6-1');//morning labs
+        const sl2 = document.getElementById('l6-2');//morning labs
+        const sl1_2 = document.getElementById('l6-1_2');//evening labs
+        const sl2_2 = document.getElementById('l6-2_2');//evening labs
+
+        const l1 = document.getElementById('f1');
+        const x = document.getElementById('fac');
+        const text = x.textContent;
+
+        axios.get('/fac_check', {
+            params: {
+                faculty: text
+            }
+        })
+            .then(response => {
+                const options = response.data;
+                m1.innerHTML = options[0].mc1;
+                m2.innerHTML = options[0].mc2;
+                m3.innerHTML = options[0].mc3;
+                m4.innerHTML = options[0].mc4;
+                m5.innerHTML = options[0].mc5;
+                m6.innerHTML = options[0].mc6;
+                m7.innerHTML = options[0].mc7;
+                //m8.innerHTML = options[0].mc8;
+                ml1.innerHTML = options[0].ml2;
+                ml2.innerHTML = "";//EVE
+                ml1_2.innerHTML = options[0].ml1;
+                ml2_2.innerHTML = "";//MOR
+
+                t1.innerHTML = options[0].tc1;
+                t2.innerHTML = options[0].tc2;
+                t3.innerHTML = options[0].tc3;
+                t4.innerHTML = options[0].tc4;
+                t5.innerHTML = options[0].tc5;
+                t6.innerHTML = options[0].tc6;
+                t7.innerHTML = options[0].tc7;
+                //t8.innerHTML = options[0].tc8;
+                tl1.innerHTML = options[0].tl1;
+                tl2.innerHTML = "";//MOR
+                tl1_2.innerHTML = options[0].tl2;
+                tl2_2.innerHTML = "";//EVE
+
+                w1.innerHTML = options[0].wc1;
+                w2.innerHTML = options[0].wc2;
+                w3.innerHTML = options[0].wc3;
+                w4.innerHTML = options[0].wc4;
+                w5.innerHTML = options[0].wc5;
+                w6.innerHTML = options[0].wc6;
+                w7.innerHTML = options[0].wc7;
+                //w8.innerHTML = options[0].wc8;
+                wl1.innerHTML = options[0].wl2;
+                wl2.innerHTML = "";//EVE
+                wl1_2.innerHTML = options[0].wl1;
+                wl2_2.innerHTML = "";//MOR
+
+                th1.innerHTML = options[0].thc1;
+                th2.innerHTML = options[0].thc2;
+                th3.innerHTML = options[0].thc3;
+                th4.innerHTML = options[0].thc4;
+                th5.innerHTML = options[0].thc5;
+                th6.innerHTML = options[0].thc6;
+                th7.innerHTML = options[0].thc7;
+                //th8.innerHTML = options[0].thc8;
+                thl1.innerHTML = options[0].thl1;
+                thl2.innerHTML = "";//MOR
+                thl1_2.innerHTML = options[0].thl2;
+                thl2_2.innerHTML = "";//EVE
+
+
+                f1.innerHTML = options[0].fc1;
+                f2.innerHTML = options[0].fc2;
+                f3.innerHTML = options[0].fc3;
+                f4.innerHTML = options[0].fc4;
+                f5.innerHTML = options[0].fc5;
+                f6.innerHTML = options[0].fc6;
+                f7.innerHTML = options[0].fc7;
+                //f8.innerHTML = options[0].fc8;
+                fl1.innerHTML = options[0].fl2;
+                fl2.innerHTML = "";//EVE
+                fl1_2.innerHTML = options[0].fl1;
+                fl2_2.innerHTML = "";//MOR
+
+
+                s1.innerHTML = options[0].sc1;
+                s2.innerHTML = options[0].sc2;
+                s3.innerHTML = options[0].sc3;
+                s4.innerHTML = options[0].sc4;
+                s5.innerHTML = options[0].sc5;
+                s6.innerHTML = options[0].sc6;
+                s7.innerHTML = options[0].sc7;
+                //s8.innerHTML = options[0].sc8;
+                sl1.innerHTML = options[0].sl1;
+                sl2.innerHTML = "";//MOR
+                sl1_2.innerHTML = options[0].sl2;
+                sl2_2.innerHTML = "";//EVE
+
+            })
+            .catch(error => {
+                console.error('Error here:', error);
+            });
+    </script>
+    <button class="no-print" onclick="window.print()">DOWNLOAD</button>
+</body>
+
+</html>

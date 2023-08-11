@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN:Manipal</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+        integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/modify.css">
+</head>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.get('/req_status',{
+
+    })
+        .then(response=>{
+            const option = response.data;
+            if(option.name==undefined){
+                location.href = "/";
+            }
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+</script>
+<body>
+    <header class="tt">
+        <a href="/home" class="logo">Teacher's Desk</a>
+        <img class="tt_logo2" src="/assets/manipal_logo.png" alt="manipal_logo">
+        <div class="toggle">
+        </div>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/home/time_table">Time Table</a></li>
+            <li><a href="/Notes">Notes</a></li>
+            <li><a href="/Admin">Admin</a></li>
+            <li><a href="/Attainment">Attainment</a></li>
+            <li><a href="/">Logout</a></li>
+        </ul>
+    </header>
+    <br><br>
+    <div class="faculty">
+        <h1>SUBJECT MODIFY</h1>
+        <br>
+        <h3>Branch<input type="text" id="selectbranch" name="selectbranch">
+            Name<input type="text" id="subname" name="subname">
+            Credits<input type="text" id="subcreds" name="subcreds">
+            Short Form<input type="text" name="short" id="short"><br>
+            Subject Code<input type="text" name="subcode" id="subcode">
+            Semester<input type="text" id="sems">
+            Time Units<input type="text" id="t_units" name="t_units"><br>
+            Batch<input type="text" id="batch" name="batch"><br>
+            <br>
+            <button onclick="addsub()">ADD</button><br><label id="addsub"></label><br>
+            <br>
+
+            <br>Select Subject Name<select id="subdel"></select><br>
+            <br>
+            <button onclick="delsub()">DELETE</button><br><label id="delsub"></label>
+        </h3><br>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const branch = document.getElementById("selectbranch");
+        const name = document.getElementById("subname");
+        const creds = document.getElementById("subcreds");
+        const code = document.getElementById("subcode");
+        const short = document.getElementById("short");
+        const sems = document.getElementById("sems");
+        const t_units = document.getElementById("t_units");
+        const batch = document.getElementById("batch");
+        const addsublabel = document.getElementById("addsub");
+        const branchdropdel = document.getElementById("selectbranchdel");
+        const subdel1 = document.getElementById("subdel");
+        const delsublabel = document.getElementById("delsub");
+
+        var disabledOption = document.createElement('option');
+        disabledOption.value = '';
+        disabledOption.selected = true;
+        disabledOption.setAttribute('disabled', 'disabled');
+        disabledOption.text = 'SUBJECT';
+
+
+        function addsub() {
+            if (name.value != '') {
+                if (creds.value != '') {
+                    if (code.value != '') {
+                        if (branch.value != '') {
+                            if (short.value != '') {
+                                if (sems.value != '') {
+                                    if (t_units.value != '') {
+                                        axios.get('/addsub', {
+                                            params: {
+                                                branch: branch.value,
+                                                name: name.value,
+                                                creds: creds.value,
+                                                code: code.value,
+                                                short: short.value,
+                                                semester: sems.value,
+                                                t_units: t_units.value,
+                                                batch: batch.value
+                                            }
+                                        })
+                                            .then(response => {
+                                                addsublabel.innerHTML = "SUBJECT ADDED";
+                                                setTimeout(() => { addsublabel.innerHTML = ""; }, 2000);
+                                            })
+                                            .catch(error => {
+                                                addsublabel.innerHTML = "ERROR";
+                                                console.error('Error: ', error);
+                                            })
+                                    }
+                                    else {
+                                        addsublabel.innerHTML = "DO NOT FIELDS BLANK";
+                                    }
+                                }
+                                else {
+                                    addsublabel.innerHTML = "DO NOT FIELDS BLANK";
+                                }
+                            }
+                            else {
+                                addsublabel.innerHTML = "DO NOT FIELDS BLANK";
+                            }
+                        }
+                        else {
+                            addsublabel.innerHTML = "DO NOT FIELDS BLANK";
+                        }
+                    }
+                    else {
+                        addsublabel.innerHTML = "DO NOT FIELDS BLANK";
+                    }
+                }
+                else {
+                    addsublabel.innerHTML = "DO NOT FIELDS BLANK";
+                }
+            }
+            else {
+                addsublabel.innerHTML = "DO NOT FIELDS BLANK";
+            }
+        }
+
+        axios.get('/delsubfetch', {
+        })
+            .then(response => {
+                subdel1.innerHTML = '';
+                subdel1.appendChild(disabledOption);
+                const options = response.data;
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.short_form;
+                    optionElement.text = option.name;
+                    subdel1.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                delsublabel.innerHTML = "ERROR";
+                console.error('Error: ', error);
+            })
+
+        function delsub() {
+            if (subdel1.options[subdel1.selectedIndex].text != '') {
+                axios.get('/delsub', {
+                    params: {
+                        name: subdel1.options[subdel1.selectedIndex].text
+                    }
+                })
+                    .then(response => {
+                        delsublabel.innerHTML = "SUBJECT DELETED";
+                        setTimeout(() => { delsublabel.innerHTML = ""; }, 2000);
+                    })
+                    .catch(error => {
+                        delsublabel.innerHTML = "ERROR";
+                        console.error('Error: ', error);
+                    })
+            }
+            else {
+                delsublabel.innerHTML = "DO NOT LEAVE FIELDS BLANK";
+            }
+        }
+    </script>
+</body>
+
+</html>

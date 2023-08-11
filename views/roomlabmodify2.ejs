@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN:Manipal</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+        integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/modify.css">
+</head>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.get('/req_status',{
+
+    })
+        .then(response=>{
+            const option = response.data;
+            if(option.name==undefined){
+                location.href = "/";
+            }
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+</script>
+<body>
+    <header class="tt">
+        <a href="/home" class="logo">Teacher's Desk</a>
+        <img class="tt_logo2" src="/assets/manipal_logo.png" alt="manipal_logo">
+        <div class="toggle">
+        </div>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/home/time_table">Time Table</a></li>
+            <li><a href="/Notes">Notes</a></li>
+            <li><a href="/Admin">Admin</a></li>
+            <li><a href="/Attainment">Attainment</a></li>
+            <li><a href="/">Logout</a></li>
+        </ul>
+    </header>   
+    <br><br><br><br><br>
+    <div class="faculty">
+
+        <h1>LAB MODIFY</h1><br>
+        <!-- <h3>Room Number:<input type="text" id="roomno">
+            <button id="addroom">ADD</button><label id="lab3"></label> <br>
+            Room Number:<select id="roms"></select>
+            <button id="del2">DELETE</button><label id="lab4"></label>
+        </h3><br> -->
+        <h3>Lab Number:<input type="text" id="labinput">
+            <button onclick="addlab()">ADD</button><label id="labmsg"></label>
+            <br>
+            Lab Number:<select id="labdeldd"></select>
+            <button id="labdelbut" onclick="dellab()">DELETE</button><label id="labdelmsg"></label>
+        </h3><br>
+
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const inputlab = document.getElementById("labinput");
+        const lablabel = document.getElementById("labmsg");
+        const labdellabel = document.getElementById("labdelmsg");
+        const labdeldd = document.getElementById("labdeldd");
+        const labdelmsg = document.getElementById("labdelmsg");
+        const classmsg = document.getElementById("classmsg");
+        const addclassmsg = document.getElementById("addclassmsg");
+        const classdd = document.getElementById("class");
+
+        var disabledOption2 = document.createElement('option');
+        disabledOption2.value = '';
+        disabledOption2.selected = true;
+        disabledOption2.setAttribute('disabled', 'disabled');
+        disabledOption2.text = 'Select';
+
+        axios.get('/dellabavail', {
+        })
+            .then(response => {
+                const options = response.data;
+                labdeldd.appendChild(disabledOption2);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.room;
+                    optionElement.text = option.room;
+                    labdeldd.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                labdellabel.innerHTML = "ERROR";
+                console.error('Error: ', error);
+            })
+
+        function dellab() {
+            if (labdeldd.options[labdeldd.selectedIndex].value != '') {
+                axios.get('/dellab', {
+                    params: {
+                        lab: labdeldd.options[labdeldd.selectedIndex].text
+                    }
+                })
+                    .then(response => {
+                        labdelmsg.innerHTML = "LAB DELETED";
+                    })
+                    .catch(error => {
+                        labdelmsg.innerHTML = "ERROR";
+                        console.error('Error :', error);
+                    })
+            }
+            else {
+                labdelmsg.innerHTML = "DO NOT LEAVE FIELDS BLANK";
+            }
+        }
+
+        function addlab() {
+            if (inputlab.value != '') {
+                axios.get('/addlab', {
+                    params: {
+                        lab: inputlab.value
+                    }
+                })
+                    .then(response => {
+                        lablabel.innerHTML = "LAB ADDED";
+                    })
+                    .catch(error => {
+                        lablabel.innerHTML = "ERROR";
+                        console.error('Error: ', error);
+                    })
+            }
+            else {
+                lablabel.innerHTML = "DO NOT FIELDS BLANK";
+            }
+        }
+
+        const roomno = document.getElementById('roomno');
+        const a2 = document.getElementById('addroom');
+        const roms = document.getElementById('roms');
+        const del2 = document.getElementById('del2');
+
+        a2.addEventListener('click', () => {
+            const room = roomno.value;
+            axios.get('/addroom', {
+                params: {
+                    room: room,
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    document.getElementById('lab3').innerHTML = options.result1;
+                })
+                .catch(error => {
+                    document.getElementById('lab3').innerHTML = 'Error';
+                    console.error('Error:', error);
+                });
+        });
+
+        var disabledOptionrom = document.createElement('option');
+        disabledOptionrom.value = '';
+        disabledOptionrom.selected = true;
+        disabledOptionrom.setAttribute('disabled', 'disabled');
+        disabledOptionrom.text = 'Select';
+
+        axios.get('/roms', {
+        })
+            .then(response => {
+                const options = response.data;
+                roms.innerHTML = '';
+                roms.appendChild(disabledOptionrom);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.room;
+                    roms.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error :', error);
+            })
+
+        del2.addEventListener('click', () => {
+            const room1 = roms.options[roms.selectedIndex].text;
+            axios.get('/delrom', {
+                params: {
+                    room1: room1,
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    document.getElementById('lab4').innerHTML = options.result1;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+
+    </script>
+</body>
+
+</html>

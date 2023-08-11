@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB OCCUPANCY</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/facfreedisp.css">
+</head>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.get('/req_status',{
+
+    })
+        .then(response=>{
+            const option = response.data;
+            if(option.name==undefined){
+                location.href = "/";
+            }
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+</script>
+<body>
+    <header class="tt">
+        <a href="/home" class="logo">Teacher's Desk</a>
+        <img class="tt_logo2" src="/assets/manipal_logo.png" alt="manipal_logo">
+        <div class="toggle">
+        </div>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/home/time_table">Time Table</a></li>
+            <li><a href="/Notes">Notes</a></li>
+            <li><a href="/Admin">Admin</a></li>
+            <li><a href="/Attainment">Attainment</a></li>
+            <li><a href="/">Logout</a></li>
+        </ul>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="tab">
+        <h3>DAY</h3>
+        <select id="day" class="btn">
+            <option>MONDAY</option>
+            <option>TUESDAY</option>
+            <option>WEDNESDAY</option>
+            <option>THURSDAY</option>
+            <option>FRIDAY</option>
+            <option>SATURDAY</option>
+        </select>
+    </div>
+    <div class="tab">
+    <h3>START</h3>
+    <select id="start" class="btn">
+        <option value=1>8:00</option>
+        <option value=2>8:30</option>
+        <option value=3>9:00</option>
+        <option value=4>9:30</option>
+        <option value=5>10:00</option>
+        <option value=6>10:30</option>
+        <option value=7>11:00</option>
+        <option value=8>11:30</option>
+        <option value=9>12:00</option>
+        <option value=10>12:30</option>
+        <option value=11>1:00</option>
+        <option value=12>1:30</option>
+        <option value=13>2:00</option>
+        <option value=14>2:30</option>
+        <option value=15>3:00</option>
+        <option value=16>3:30</option>
+        <option value=17>4:00</option>
+        <option value=18>4:30</option>
+    </select>
+    <button onclick="go()" class="btn">SET START</button>
+</div>
+<div class="tab">
+    <h3>END</h3>
+    <select id="end" class="btn">
+    </select>
+    <button onclick="go2()" class="btn">CHECK</button>
+</div>
+    <table border=1 id="factable">
+        <tbody>
+            <thead>
+                    <tr>
+                        <td>
+                            S.NO
+                        </td>
+                        <td>
+                            FREE FACULTIES
+                        </td>
+                    </tr>
+            </thead>
+        </tbody>
+    </table>
+</body>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+    var x = document.getElementById('start');
+    var json = { 1: '8:00', 2: '8:30', 3: '9:00', 4: '9:30', 5: '10:00', 6: '10:30', 7: '11:00', 8: '11:30', 9: '12:00', 10: '12:30', 11: '1:00', 12: '1:30', 13: '2:00', 14: '2:30', 15: '3:00', 16: '3:30', 17: '4:00', 18: '4:30' };
+    var end = document.getElementById('end');
+    var dayy = document.getElementById('day');
+    function go() {
+        let a = x.options[x.selectedIndex].value;
+        while (end.options.length > 0) {
+            end.remove(0);
+        }
+        console.log(a);
+        let b = 1;
+        for (; b <= 18; b++) {
+            if (b > a) {
+                var opt = document.createElement('option');
+                opt.text = json[b];
+                opt.value = b;
+                end.appendChild(opt);
+            }
+        }
+    }
+    function go2() {
+        let a = x.options[x.selectedIndex].value;
+        let b = end.options[end.selectedIndex].value;
+        console.log(a);
+        console.log(b);
+        var day = dayy.options[dayy.selectedIndex].text;
+
+        if(day=="MONDAY"){
+            var farr = [['mc1', 'mc1'], ['mc1', 'ml1'], ['mc2', 'ml1'], ['mc2', 'ml1'], ['ml1', 'ml1'], ['mc3', 'ml1'], ['mc3', 'ml1'], ['mc4', 'mc4'], ['mc4', 'mc4'], [], ['mc5', 'mc5'], ['mc5', 'mc5'], ['mc6', 'ml2'], ['mc6', 'ml2'], ['ml2', 'ml2'], ['mc7', 'ml2'], ['mc7', 'ml2']];
+        }
+        else if(day=="TUESDAY"){
+            var farr = [['tc1', 'tc1'], ['tc1', 'tl1'], ['tc2', 'tl1'], ['tc2', 'tl1'], ['tl1', 'tl1'], ['tc3', 'tl1'], ['tc3', 'tl1'], ['tc4', 'tc4'], ['tc4', 'tc4'], [], ['tc5', 'tc5'], ['tc5', 'tc5'], ['tc6', 'tl2'], ['tc6', 'tl2'], ['tl2', 'tl2'], ['tc7', 'tl2'], ['tc7', 'tl2']];
+        }
+        else if(day=="WEDNESDAY"){
+            var farr = [['wc1', 'wc1'], ['wc1', 'wl1'], ['wc2', 'wl1'], ['wc2', 'wl1'], ['wl1', 'wl1'], ['wc3', 'wl1'], ['wc3', 'wl1'], ['wc4', 'wc4'], ['wc4', 'wc4'], [], ['wc5', 'wc5'], ['wc5', 'wc5'], ['wc6', 'wl2'], ['wc6', 'wl2'], ['wl2', 'wl2'], ['wc7', 'wl2'], ['wc7', 'wl2']];
+        }
+        else if(day=="THURSDAY"){
+            var farr = [['thc1', 'thc1'], ['thc1', 'thl1'], ['thc2', 'thl1'], ['thc2', 'thl1'], ['thl1', 'thl1'], ['thc3', 'thl1'], ['thc3', 'thl1'], ['thc4', 'thc4'], ['thc4', 'thc4'], [], ['thc5', 'thc5'], ['thc5', 'thc5'], ['thc6', 'thl2'], ['thc6', 'thl2'], ['thl2', 'thl2'], ['thc7', 'thl2'], ['thc7', 'thl2']];
+        }
+        else if(day=="FRIDAY"){
+            var farr = [['fc1', 'fc1'], ['fc1', 'fl1'], ['fc2', 'fl1'], ['fc2', 'fl1'], ['fl1', 'fl1'], ['fc3', 'fl1'], ['fc3', 'fl1'], ['fc4', 'fc4'], ['fc4', 'fc4'], [], ['fc5', 'fc5'], ['fc5', 'fc5'], ['fc6', 'fl2'], ['fc6', 'fl2'], ['fl2', 'fl2'], ['fc7', 'fl2'], ['fc7', 'fl2']];
+        }
+        else{
+            var farr = [['sc1', 'sc1'], ['sc1', 'sl1'], ['sc2', 'sl1'], ['sc2', 'sl1'], ['sl1', 'sl1'], ['sc3', 'sl1'], ['sc3', 'sl1'], ['sc4', 'sc4'], ['sc4', 'sc4'], [], ['sc5', 'sc5'], ['sc5', 'sc5'], ['sc6', 'sl2'], ['sc6', 'sl2'], ['sl2', 'sl2'], ['sc7', 'sl2'], ['sc7', 'sl2']];
+        }
+        
+        var flags = [];
+        for (let i = 1; i < 18; i++) {
+            if (i < b && i >= a) {
+                for (let j = 0; j < farr[i - 1].length; j++) {
+                    console.log(j);
+                    flags.push(farr[i - 1][j]);
+                }
+            }
+        }
+        while (flags.length < 32) {
+            flags.push(flags[0]);
+        }
+        console.log(flags);
+        axios.get('/freefac1', {
+            params: {
+                flags: flags
+            }
+        })
+            .then(response => {
+                const options = response.data;
+                var i=1;
+                var table = document.querySelector("#factable tbody");
+                options.forEach(option => {
+                    var row = document.createElement("tr");
+                    var data = document.createElement("td");
+                    var sno = document.createElement("td");
+                    sno.textContent = i;
+                    row.append(sno);
+                    data.textContent = option.name;
+                    row.append(data);
+                    table.appendChild(row);
+                    i++;
+                })
+            })
+            .catch(error => {
+                console.error('Error :', error);
+            });
+    }
+</script>
+
+</html>

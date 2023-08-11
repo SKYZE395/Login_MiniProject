@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preferences</title>
+  <style>
+    body {
+      background-image: url('/assets/pic4.jpg');
+      background-size: cover;
+      text-align: center;
+      background-attachment: fixed;
+    }
+
+    select {
+      width: 350px;
+      height: 50px;
+      padding: 5px;
+      font-size: 18px;
+      margin-right: 10px;
+      margin-left: 100px;
+      background-color: #f2f2f2;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      color: #333;
+    }
+  </style>
+</head>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.get('/req_status',{
+
+    })
+        .then(response=>{
+            const option = response.data;
+            if(option.name==undefined){
+                location.href = "/";
+            }
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+</script>
+<body>
+  <br>
+  <h1 style="color: #323234; text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);"><b>Preferences</b></h1>
+  <br><br>
+  <select name="Preference-1" id="pref1"></select>
+  <select name="Lab preference-1" id="lpref1"></select><br><br>
+  <select name="Preference-2" id="pref2"></select>
+  <select name="Lab preference-2" id="lpref2"></select><br><br>
+  <select name="Preference-3" id="pref3"></select>
+  <select name="Lab preference-3" id="lpref3"></select><br><br>
+  <select name="Preference-4" id="pref4"></select>
+  <select name="Lab preference-4" id="lpref4"></select><br><br>
+  <select name="Preference-5" id="pref5"></select>
+  <select name="Lab preference-5" id="lpref5"></select><br><br><br><br>
+  <button
+    style="margin: 5px;padding: 5px 10px;background-color: #c6530b;color: #fff;cursor: pointer;border-radius: 5px;height:40px;width:100px;font-size: 20px;"
+    ; id="prefsubmit" type="submit" onclick="send()">Save</button>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+
+    const p1 = document.getElementById('pref1');
+    const p2 = document.getElementById('pref2');
+    const p3 = document.getElementById('pref3');
+    const p4 = document.getElementById('pref4');
+    const p5 = document.getElementById('pref5');
+    const lp1 = document.getElementById('lpref1');
+    const lp2 = document.getElementById('lpref2');
+    const lp3 = document.getElementById('lpref3');
+    const lp4 = document.getElementById('lpref4');
+    const lp5 = document.getElementById('lpref5');
+
+    var disabledOption1 = document.createElement('option');
+    disabledOption1.value = '';
+    disabledOption1.selected = true;
+    disabledOption1.setAttribute('disabled', 'disabled');
+    disabledOption1.text = 'Preference-1';
+    var disabledOption2 = document.createElement('option');
+    disabledOption2.value = '';
+    disabledOption2.selected = true;
+    disabledOption2.setAttribute('disabled', 'disabled');
+    disabledOption2.text = 'Preference-2';
+    var disabledOption3 = document.createElement('option');
+    disabledOption3.value = '';
+    disabledOption3.selected = true;
+    disabledOption3.setAttribute('disabled', 'disabled');
+    disabledOption3.text = 'Preference-3';
+    var disabledOption4 = document.createElement('option');
+    disabledOption4.value = '';
+    disabledOption4.selected = true;
+    disabledOption4.setAttribute('disabled', 'disabled');
+    disabledOption4.text = 'Preference-4';
+    var disabledOption5 = document.createElement('option');
+    disabledOption5.value = '';
+    disabledOption5.selected = true;
+    disabledOption5.setAttribute('disabled', 'disabled');
+    disabledOption5.text = 'Preference-5';
+
+    var disabledOption1l = document.createElement('option');
+    disabledOption1l.value = '';
+    disabledOption1l.selected = true;
+    disabledOption1l.setAttribute('disabled', 'disabled');
+    disabledOption1l.text = 'Lab preference-1';
+    var disabledOption2l = document.createElement('option');
+    disabledOption2l.value = '';
+    disabledOption2l.selected = true;
+    disabledOption2l.setAttribute('disabled', 'disabled');
+    disabledOption2l.text = 'Lab preference-2';
+    var disabledOption3l = document.createElement('option');
+    disabledOption3l.value = '';
+    disabledOption3l.selected = true;
+    disabledOption3l.setAttribute('disabled', 'disabled');
+    disabledOption3l.text = 'Lab preference-3';
+    var disabledOption4l = document.createElement('option');
+    disabledOption4l.value = '';
+    disabledOption4l.selected = true;
+    disabledOption4l.setAttribute('disabled', 'disabled');
+    disabledOption4l.text = 'Lab preference-4';
+    var disabledOption5l = document.createElement('option');
+    disabledOption5l.value = '';
+    disabledOption5l.selected = true;
+    disabledOption5l.setAttribute('disabled', 'disabled');
+    disabledOption5l.text = 'Lab preference-5';
+
+
+    axios.get('/getpref', {
+    })
+      .then(response => {
+        const options = response.data;
+        p1.innerHTML = '';
+        p1.appendChild(disabledOption1);
+        options.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.text = option.name;
+          p1.appendChild(optionElement);
+        });
+        p2.innerHTML = '';
+        p2.appendChild(disabledOption2);
+        options.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.text = option.name;
+          p2.appendChild(optionElement);
+        });
+        p3.innerHTML = '';
+        p3.appendChild(disabledOption3);
+        options.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.text = option.name;
+          p3.appendChild(optionElement);
+        });
+        p4.innerHTML = '';
+        p4.appendChild(disabledOption4);
+        options.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.text = option.name;
+          p4.appendChild(optionElement);
+        });
+        p5.innerHTML = '';
+        p5.appendChild(disabledOption5);
+        options.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.text = option.name;
+          p5.appendChild(optionElement);
+        });
+      })
+      .catch(error => {
+        console.error('Error: ', error);
+      });
+
+    axios.get('/getpreflab', {
+    })
+      .then(response => {
+        const options = response.data;
+        lp1.innerHTML = '';
+        lp1.appendChild(disabledOption1l);
+        options.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.text = option.name;
+          lp1.appendChild(optionElement);
+        });
+        lp2.innerHTML = '';
+        lp2.appendChild(disabledOption2l);
+        options.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.text = option.name;
+          lp2.appendChild(optionElement);
+        });
+        lp3.innerHTML = '';
+        lp3.appendChild(disabledOption3l);
+        options.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.text = option.name;
+          lp3.appendChild(optionElement);
+        });
+        lp4.innerHTML = '';
+        lp4.appendChild(disabledOption4l);
+        options.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.text = option.name;
+          lp4.appendChild(optionElement);
+        });
+        lp5.innerHTML = '';
+        lp5.appendChild(disabledOption5l);
+        options.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.text = option.name;
+          lp5.appendChild(optionElement);
+        });
+      })
+      .catch(error => {
+        console.error('Error: ', error);
+      });
+
+
+    function send() {
+      const a1 = document.getElementById("pref1").value;
+      const a2 = document.getElementById("pref2").value;
+      const a3 = document.getElementById("pref3").value;
+      const a4 = document.getElementById("pref4").value;
+      const a5 = document.getElementById("pref5").value;
+      const al1 = document.getElementById("lpref1").value;
+      const al2 = document.getElementById("lpref2").value;
+      const al3 = document.getElementById("lpref3").value;
+      const al4 = document.getElementById("lpref4").value;
+      const al5 = document.getElementById("lpref5").value;
+      const d = document.getElementById("prefsubmit");
+      axios.get('/sendpref', {
+        params: {
+          a1: a1,
+          a2: a2,
+          a3: a3,
+          a4: a4,
+          a5: a5,
+          al1: al1,
+          al2: al2,
+          al3: al3,
+          al4: al4,
+          al5: al5
+        }
+      })
+        .then(response => {
+          const options = response.data;
+          d.innerHTML = "Success";
+        })
+        .catch(error => {
+          console.error('error', error);
+        });
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/branch.css">
+    <title>Branches</title>
+</head>
+<body>
+    <div class="container">
+        <div><h1>Select the Department</h1></div>
+        <br>
+        <!--<div class="frame">
+            <button class="custom-btn btn-1" onclick="selectdb1()" id="but1"><span>Chemical</span></button>
+            <button class="custom-btn btn-2" onclick="selectdb2()" id="but2"><span>Civil</span></button>
+            <button class="custom-btn btn-3" onclick="selectdb3()" id="but3"><span>ICT</span></button>
+            <button class="custom-btn btn-4" onclick="selectdb4()" id="but4"><span>Electrical</span></button>
+            <button class="custom-btn btn-5" onclick="selectdb5()" id="but5"><span>Mechanical</span></button>
+        </div>-->
+        <div class="frame">
+            <select id="branch">
+                <option selected disabled value="nodejs">BRANCH</option>
+                <option value="chemical">Chemical</option>
+                <option value="civil">Civil</option>
+                <option value="nodejs">ICT</option>
+                <option value="electrical">Electrical</option>
+                <option value="mechanical">Mechanical</option>
+            </select>
+            <button onclick="check()">SELECT</button>
+        </div>
+    </div>
+    
+    </div>
+    <div>
+        <label id="dbselmsg"></label>
+        <p>
+            <%= msg1 %>
+        </p>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function check(){
+            const op = document.getElementById('branch');
+            var option = op.options[op.selectedIndex].value;
+            console.log(op);
+            axios.get('/dbsel', {
+                params: {
+                    db: option
+                }
+            })
+                .then(response => {
+
+                    y.innerHTML = "success";
+                    console.log("success");
+                    location.href = "/index";
+                })
+                .catch(error => {
+                    console.error('Error :', error);
+                    y.innerHTML = "ERROR IN DATABASE:" + error;
+                })
+
+        }
+        const y = document.getElementById('dbselmsg');
+        function selectdb1() {
+            var x = document.getElementById("but1").textContent;
+            console.log(x);
+            axios.get('/dbsel', {
+                params: {
+                    db: "chemical"
+                }
+            })
+                .then(response => {
+
+                    y.innerHTML = "success";
+                    console.log("success");
+                    location.href = "/index.html";
+                })
+                .catch(error => {
+                    console.error('Error :', error);
+                    y.innerHTML = "ERROR IN DATABASE:" + error;
+                })
+        }
+        function selectdb2() {
+            var x = document.getElementById("but2").textContent;
+            console.log(x);
+            axios.get('/dbsel', {
+                params: {
+                    db: "civil"
+                }
+            })
+                .then(response => {
+                    const y = document.getElementById('dbselmsg');
+                    y.innerHTML = "success";
+                    console.log("success");
+                    location.href = "/index.html";
+                })
+                .catch(error => {
+                    console.error('Error :', error);
+                    y.innerHTML = "ERROR IN DATABASE:" + error;
+                })
+        }
+        function selectdb3() {
+            var x = document.getElementById("but3").textContent;
+            console.log(x);
+            axios.get('/dbsel', {
+                params: {
+                    db: "nodejs"
+                }
+            })
+                .then(response => {
+                    const y = document.getElementById('dbselmsg');
+                    y.innerHTML = "success";
+                    console.log("success");
+                    location.href = "/index";
+                })
+                .catch(error => {
+                    console.error('Error :', error);
+                    y.innerHTML = "ERROR IN DATABASE:" + error;
+                })
+        }
+        function selectdb4() {
+            var x = document.getElementById("but4").textContent;
+            console.log(x);
+            axios.get('/dbsel', {
+                params: {
+                    db: "electrical"
+                }
+            })
+                .then(response => {
+                    const y = document.getElementById('dbselmsg');
+                    y.innerHTML = "success";
+                    console.log("success");
+                    location.href = "/index.html";
+                })
+                .catch(error => {
+                    console.error('Error :', error);
+                    y.innerHTML = "ERROR IN DATABASE:" + error;
+                })
+        }
+        function selectdb5() {
+            var x = document.getElementById("but5").textContent;
+            console.log(x);
+            axios.get('/dbsel', {
+                params: {
+                    db: "mechanical"
+                }
+            })
+                .then(response => {
+                    const y = document.getElementById('dbselmsg');
+                    y.innerHTML = "success";
+                    console.log("success");
+                    location.href = "/index.html";
+                })
+                .catch(error => {
+                    console.error('Error :', error);
+                    y.innerHTML = "ERROR IN DATABASE:" + error;
+                })
+        }
+    </script>
+</body>
+
+</html>

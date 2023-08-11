@@ -1,0 +1,2379 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Time Table</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+        integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/first_style.css">
+    <link rel="stylesheet" href="/assets/mon_mor_lab.css">
+</head>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.get('/req_status',{
+
+    })
+        .then(response=>{
+            const option = response.data;
+            if(option.name==undefined){
+                location.href = "/";
+            }
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+</script>
+<body>
+    <header class="tt">
+        <a href="/home" class="logo">Teacher's Desk</a>
+        <img class="tt_logo3" src="/assets/manipal_logo.png" alt="manipal_logo"></img>
+        <div class="toggle">
+        </div>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/home/time_table">Time Table</a></li>
+            <li><a href="/Notes">Notes</a></li>
+            <li><a href="/Admin">Admin</a></li>
+            <li><a href="/Attainment">Attainment</a></li>
+            <li><a href="/">Logout</a></li>
+        </ul>
+    </header>
+    <div class="container" style="text-align: center;">
+        <h1 class="text-center display-4">Time Table</h1>
+        <div class="row">
+            <h6 class="col-1 border">DAY</h6>
+            <h6 class="col-1 border">08:00-09:00</h6>
+            <h6 class="col-1 border">09:00-10:00</h6>
+            <h6 class="col-1 border">10:00-10:30</h6>
+            <h6 class="col-1 border">10:30-11:30</h6>
+            <h6 class="col-1 border">11:30-12:30</h6>
+            <h6 class="col-1 border">12:30-01:00</h6>
+            <h6 class="col-1 border">01:00-02:00</h6>
+            <h6 class="col-1 border">02:00-03:00</h6>
+            <h6 class="col-1 border">03:00-03:30</h6>
+            <h6 class="col-1 border">03:30-04:30</h6>
+        </div>
+        <div class="row">
+            <div class="col-1 border">MONDAY</div>
+            <div class="col-1 border"></div>
+            <div class="col-3 border">
+                <div id="l1-1">LAB-1-1</div>
+                <div id="l1-2">LAB-1-2</div>
+            </div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-1 border" id="s1-1">SUB-1</div>
+            <div class="col-1 border" id="s2-1">SUB-2</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s3-1">SUB-3</div>
+        </div>
+        <div class="row">
+            <div class="col-1 border">TUESDAY</div>
+            <div class="col-1 border" id="s4-1">SUB-4</div>
+            <div class="col-1 border" id="s5-1">SUB-5</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s6-1">SUB-6</div>
+            <div class="col-1 border" id="s1-2">SUB-1</div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-3 border">
+                <div id="l2-1">LAB-2-1</div>
+                <div id="l2-2">LAB-2-2</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 border">WEDNES-DAY</div>
+            <div class="col-1 border"></div>
+            <div class="col-3 border">
+                <div id="l3-1">LAB-3-1</div>
+                <div id="l3-2">LAB-3-2</div>
+            </div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-1 border" id="s3-2">SUB-3</div>
+            <div class="col-1 border" id="s4-2">SUB-4</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s5-2">SUB-5</div>
+        </div>
+        <div class="row">
+            <div class="col-1 border">THURS-DAY</div>
+            <div class="col-1 border" id="s6-2">SUB-6</div>
+            <div class="col-1 border" id="s1-3">SUB-1</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s2-2">SUB-2</div>
+            <div class="col-1 border" id="s3-3">SUB-3</div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-3 border">
+                <div id="l4-1">LAB-4-1</div>
+                <div id="l4-2">LAB-4-2</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 border">FRIDAY</div>
+            <div class="col-1 border"></div>
+            <div class="col-3 border">
+                <div id="l5-1">LAB-5-1</div>
+                <div id="l5-2">LAB-5-2</div>
+            </div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-1 border" id="s5-3">SUB-5</div>
+            <div class="col-1 border" id="s6-3">SUB-6</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s1-4">SUB-1</div>
+        </div>
+        <div class="row">
+            <div class="col-1 border">SATUR-DAY</div>
+            <div class="col-1 border" id="s2-3">SUB-2</div>
+            <div class="col-1 border" id="s3-4">SUB-3</div>
+            <div class="col-1 border">BREAK</div>
+            <div class="col-1 border" id="s4-3">SUB-4</div>
+            <div class="col-1 border" id="s5-4">SUB-5</div>
+            <div class="col-2 border">LUNCH BREAK</div>
+            <div class="col-3 border">
+                <div id="l6-1">LAB-6-1</div>
+                <div id="l6-2">LAB-6-2</div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <br>
+    <select name="Subject-1" id="Subject1">
+        <option value="" disabled selected>Subject-1</option>
+    </select>
+    <button onclick="myFunction1()">Go</button>
+    <select name="Faculty" id="Faculty1">
+        <option value="" disabled selected>Faculty-1</option>
+    </select>
+
+    <button onclick="" id="rset1">RESET</button>
+
+    <!-- <select id="room">
+        <option value="" disabled selected>ROOM NO</option>
+    </select> -->
+    <label id="f1"></label>
+    <br>
+    <select name="Subject-2" id="Subject2">
+        <option value="" disabled selected>Subject-2</option>
+    </select>
+    <button onclick="myFunction2()">Go</button>
+    <select name="Faculty" id="Faculty2">
+        <option value="" disabled selected>Faculty-2</option>
+    </select>
+    <button onclick="" id="rset2">RESET</button>
+    <label id="f2"></label>
+    <br>
+    <select name="Subject-3" id="Subject3">
+        <option value="" disabled selected>Subject-3</option>
+    </select>
+    <button onclick="myFunction3()">Go</button>
+    <select name="Faculty" id="Faculty3">
+        <option value="" disabled selected>Faculty-3</option>
+    </select>
+    <button onclick="" id="rset3">RESET</button>
+    <label id="f3"></label>
+    <br>
+    <select name="Subject-4" id="Subject4">
+        <option value="" disabled selected>Subject-4</option>
+    </select>
+    <button onclick="myFunction4()">Go</button>
+    <select name="Faculty" id="Faculty4">
+        <option value="" disabled selected>Faculty-4</option>
+    </select>
+    <button onclick="" id="rset4">RESET</button>
+    <label id="f4"></label>
+    <br>
+    <select name="Subject-5" id="Subject5">
+        <option value="" disabled selected>Subject-5</option>
+    </select>
+    <button onclick="myFunction5()">Go</button>
+    <select name="Faculty" id="Faculty5">
+        <option value="" disabled selected>Faculty-5</option>
+    </select>
+    <button onclick="" id="rset5">RESET</button>
+    <label id="f5"></label>
+    <br>
+    <select name="Subject-6" id="Subject6">
+        <option value="" disabled selected>Subject-6</option>
+    </select>
+    <button onclick="myFunction6()">Go</button>
+    <select name="Faculty" id="Faculty6">
+        <option value="" disabled selected>Faculty-6</option>
+    </select>
+    <button onclick="" id="rset6">RESET</button>
+    <label id="f6"></label>
+    <br>
+    <select name="Lab-1-1" id="Lab-1-1">
+    </select>
+    <button onclick="myFunctionl11()">Go</button>
+    <select name="Faculty" id="LabFaculty111">
+        <option value="" disabled selected>Lab Faculty-1</option>
+    </select>
+    <select name="Faculty" id="LabFaculty112">
+        <option value="" disabled selected>Lab Faculty-2</option>
+    </select>
+    SELECT ROOM FOR B1<select id="rooml1_b1">
+        <option disabled selected value="">ROOM FOR B1</option>
+    </select>
+    <button onclick="" id="rsetl1">RESET</button>
+    <label id="f7"></label>
+    <br>
+    <select name="Lab-1-2" id="Lab-1-2">
+    </select>
+    <button onclick="myFunctionl12()">Go</button>
+    <select name="Faculty" id="LabFaculty121">
+        <option value="" disabled selected>Lab Faculty-1</option>
+    </select>
+    <select name="Faculty" id="LabFaculty122">
+        <option value="" disabled selected>Lab Faculty-2</option>
+    </select>
+    SELECT ROOM FOR B2<select id="rooml1_b2">
+        <option disabled selected value="">ROOM FOR B2</option>
+    </select>
+    <button onclick="" id="rsetl2">RESET</button>
+    <label id="f8"></label>
+    <br>
+    <select name="Lab-2-1" id="Lab-2-1">
+    </select>
+    <button onclick="myFunctionl21()">Go</button>
+    <select name="Faculty" id="LabFaculty211">
+        <option value="" disabled selected>Lab Faculty-1</option>
+    </select>
+    <select name="Faculty" id="LabFaculty212">
+        <option value="" disabled selected>Lab Faculty-2</option>
+    </select>
+    SELECT ROOM FOR B1<select id="rooml2_b1">
+        <option disabled selected value="">ROOM FOR B1</option>
+    </select>
+    <button onclick="" id="rsetl3">RESET</button>
+    <label id="f9"></label>
+    <br>
+    <select name="Lab-2-2" id="Lab-2-2">
+    </select>
+    <button onclick="myFunctionl22()">Go</button>
+    <select name="Faculty" id="LabFaculty221">
+        <option value="" disabled selected>Lab Faculty-1</option>
+    </select>
+    <select name="Faculty" id="LabFaculty222">
+        <option value="" disabled selected>Lab Faculty-2</option>
+    </select>
+    SELECT ROOM FOR B2<select id="rooml2_b2">
+        <option disabled selected value="">ROOM FOR B2</option>
+    </select>
+    <button onclick="" id="rsetl4">RESET</button>
+    <label id="f10"></label>
+
+
+    <br>
+    <select name="Lab-3-1" id="Lab-3-1">
+    </select>
+    <button onclick="myFunctionl31()">Go</button>
+    <select name="Faculty" id="LabFaculty311">
+        <option value="" disabled selected>Lab Faculty-1</option>
+    </select>
+    <select name="Faculty" id="LabFaculty312">
+        <option value="" disabled selected>Lab Faculty-2</option>
+    </select>
+    SELECT ROOM FOR B1<select id="rooml3_b1">
+        <option disabled selected value="">ROOM FOR B1</option>
+    </select>
+    <button onclick="" id="rsetl5">RESET</button>
+    <label id="f11"></label>
+    <br>
+    <select name="Lab-3-2" id="Lab-3-2">
+    </select>
+    <button onclick="myFunctionl32()">Go</button>
+    <select name="Faculty" id="LabFaculty321">
+        <option value="" disabled selected>Lab Faculty-1</option>
+    </select>
+    <select name="Faculty" id="LabFaculty322">
+        <option value="" disabled selected>Lab Faculty-2</option>
+    </select>
+    SELECT ROOM FOR B2<select id="rooml3_b2">
+        <option disabled selected value="">ROOM FOR B2</option>
+    </select>
+    <button onclick="" id="rsetl6">RESET</button>
+    <label id="f12"></label>
+    <br>
+    <select name="Lab-4-1" id="Lab-4-1">
+    </select>
+    <button onclick="myFunctionl41()">Go</button>
+    <select name="Faculty" id="LabFaculty411">
+        <option value="" disabled selected>Lab Faculty-1</option>
+    </select>
+    <select name="Faculty" id="LabFaculty412">
+        <option value="" disabled selected>Lab Faculty-2</option>
+    </select>
+    SELECT ROOM FOR B1<select id="rooml4_b1">
+        <option disabled selected value="">ROOM FOR B1</option>
+    </select>
+    <button onclick="" id="rsetl7">RESET</button>
+    <label id="f13"></label>
+    <br>
+    <select name="Lab-4-2" id="Lab-4-2">
+    </select>
+    <button onclick="myFunctionl42()">Go</button>
+    <select name="Faculty" id="LabFaculty421">
+        <option value="" disabled selected>Lab Faculty-1</option>
+    </select>
+    <select name="Faculty" id="LabFaculty422">
+        <option value="" disabled selected>Lab Faculty-2</option>
+    </select>
+    SELECT ROOM FOR B2<select id="rooml4_b2">
+        <option disabled selected value="">ROOM FOR B2</option>
+    </select>
+    <button onclick="" id="rsetl8">RESET</button>
+    <label id="f14"></label>
+    <br>
+    <select name="Lab-5-1" id="Lab-5-1">
+    </select>
+    <button onclick="myFunctionl51()">Go</button>
+    <select name="Faculty" id="LabFaculty511">
+        <option value="" disabled selected>Lab Faculty-1</option>
+    </select>
+    <select name="Faculty" id="LabFaculty512">
+        <option value="" disabled selected>Lab Faculty-2</option>
+    </select>
+    SELECT ROOM FOR B1<select id="rooml5_b1">
+        <option disabled selected value="">ROOM FOR B1</option>
+    </select>
+    <button onclick="" id="rsetl9">RESET</button>
+    <label id="f15"></label>
+    <br>
+    <select name="Lab-5-2" id="Lab-5-2">
+    </select>
+    <button onclick="myFunctionl52()">Go</button>
+    <select name="Faculty" id="LabFaculty521">
+        <option value="" disabled selected>Lab Faculty-1</option>
+    </select>
+    <select name="Faculty" id="LabFaculty522">
+        <option value="" disabled selected>Lab Faculty-2</option>
+    </select>
+    SELECT ROOM FOR B2<select id="rooml5_b2">
+        <option disabled selected value="">ROOM FOR B2</option>
+    </select>
+    <button onclick="" id="rsetl10">RESET</button>
+    <label id="f16"></label>
+    <br>
+    <select name="Lab-6-1" id="Lab-6-1">
+    </select>
+    <button onclick="myFunctionl61()">Go</button>
+    <select name="Faculty" id="LabFaculty611">
+        <option value="" disabled selected>Lab Faculty-1</option>
+    </select>
+    <select name="Faculty" id="LabFaculty612">
+        <option value="" disabled selected>Lab Faculty-2</option>
+    </select>
+    SELECT ROOM FOR B1<select id="rooml6_b1">
+        <option disabled selected value="">ROOM FOR B1</option>
+    </select>
+    <button onclick="" id="rsetl11">RESET</button>
+    <label id="f17"></label>
+    <br>
+    <select name="Lab-6-2" id="Lab-6-2">
+    </select>
+    <button onclick="myFunctionl62()">Go</button>
+    <select name="Faculty" id="LabFaculty621">
+        <option value="" disabled selected>Lab Faculty-1</option>
+    </select>
+    <select name="Faculty" id="LabFaculty622">
+        <option value="" disabled selected>Lab Faculty-2</option>
+    </select>
+    SELECT ROOM FOR B2<select id="rooml6_b2">
+        <option disabled selected value="">ROOM FOR B2</option>
+    </select>
+    <button onclick="" id="rsetl12">RESET</button>
+    <label id="f18"></label>
+    <br>
+    <br>
+
+
+    <script>
+        function star() {
+            const x = document.getElementById('star_selection');
+            selectedbox = document.getElementById(x.options[x.selectedIndex].value);
+            selectedbox.style.backgroundColor = 'yellow';
+            selectedbox.innerHTML = selectedbox.innerHTML + "*";
+        }
+    </script>
+    <br>
+    <button onclick="" id="save">SAVE TIME TABLE</button>
+    <label id='pop'></label>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const d1 = document.getElementById('Subject1');
+        const d2 = document.getElementById('Subject2');
+        const d3 = document.getElementById('Subject3');
+        const d4 = document.getElementById('Subject4');
+        const d5 = document.getElementById('Subject5');
+        const d6 = document.getElementById('Subject6');
+        //subject-faculties
+        const dd1 = document.getElementById('Faculty1');
+        const dd2 = document.getElementById('Faculty2');
+        const dd3 = document.getElementById('Faculty3');
+        const dd4 = document.getElementById('Faculty4');
+        const dd5 = document.getElementById('Faculty5');
+        const dd6 = document.getElementById('Faculty6');
+        //labs
+        const l11 = document.getElementById('Lab-1-1');
+        const l12 = document.getElementById('Lab-1-2');
+        const l21 = document.getElementById('Lab-2-1');
+        const l22 = document.getElementById('Lab-2-2');
+        const l31 = document.getElementById('Lab-3-1');
+        const l32 = document.getElementById('Lab-3-2');
+        const l41 = document.getElementById('Lab-4-1');
+        const l42 = document.getElementById('Lab-4-2');
+        const l51 = document.getElementById('Lab-5-1');
+        const l52 = document.getElementById('Lab-5-2');
+        const l61 = document.getElementById('Lab-6-1');
+        const l62 = document.getElementById('Lab-6-2');
+        //lab-faculties
+        const ld11 = document.getElementById('LabFaculty111');
+        const ld21 = document.getElementById('LabFaculty211');
+        const ld31 = document.getElementById('LabFaculty311');
+        const ld41 = document.getElementById('LabFaculty411');
+        const ld51 = document.getElementById('LabFaculty511');
+        const ld61 = document.getElementById('LabFaculty611');
+        const ld12 = document.getElementById('LabFaculty121');
+        const ld22 = document.getElementById('LabFaculty221');
+        const ld32 = document.getElementById('LabFaculty321');
+        const ld42 = document.getElementById('LabFaculty421');
+        const ld52 = document.getElementById('LabFaculty521');
+        const ld62 = document.getElementById('LabFaculty621');
+
+        const ld11_2 = document.getElementById('LabFaculty112');
+        const ld21_2 = document.getElementById('LabFaculty212');
+        const ld31_2 = document.getElementById('LabFaculty312');
+        const ld41_2 = document.getElementById('LabFaculty412');
+        const ld51_2 = document.getElementById('LabFaculty512');
+        const ld61_2 = document.getElementById('LabFaculty612');
+        const ld12_2 = document.getElementById('LabFaculty122');
+        const ld22_2 = document.getElementById('LabFaculty222');
+        const ld32_2 = document.getElementById('LabFaculty322');
+        const ld42_2 = document.getElementById('LabFaculty422');
+        const ld52_2 = document.getElementById('LabFaculty522');
+        const ld62_2 = document.getElementById('LabFaculty622');
+
+        //ROOM DROPDOWN
+        //const rd = document.getElementById('room');
+        const lrd1 = document.getElementById('rooml1_b1');
+        const lrd7 = document.getElementById('rooml1_b2');
+        const lrd2 = document.getElementById('rooml2_b1');
+        const lrd8 = document.getElementById('rooml2_b2');
+        const lrd3 = document.getElementById('rooml3_b1');
+        const lrd9 = document.getElementById('rooml3_b2');
+        const lrd4 = document.getElementById('rooml4_b1');
+        const lrd10 = document.getElementById('rooml4_b2');
+        const lrd5 = document.getElementById('rooml5_b1');
+        const lrd11 = document.getElementById('rooml5_b2');
+        const lrd6 = document.getElementById('rooml6_b1');
+        const lrd12 = document.getElementById('rooml6_b2');
+        var froom;
+        axios.get('/getroom', {
+            params: {
+            }
+        })
+            .then(response => {
+                const options = response.data;
+                froom = options[0].room_number;
+                console.log(froom);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        var disabledOption1 = document.createElement('option');
+        disabledOption1.value = '';
+        disabledOption1.selected = true;
+        disabledOption1.setAttribute('disabled', 'disabled');
+        disabledOption1.text = 'SUBJECT 1';
+        var disabledOption2 = document.createElement('option');
+        disabledOption2.value = '';
+        disabledOption2.selected = true;
+        disabledOption2.setAttribute('disabled', 'disabled');
+        disabledOption2.text = 'SUBJECT 2';
+        var disabledOption3 = document.createElement('option');
+        disabledOption3.value = '';
+        disabledOption3.selected = true;
+        disabledOption3.setAttribute('disabled', 'disabled');
+        disabledOption3.text = 'SUBJECT 3';
+        var disabledOption4 = document.createElement('option');
+        disabledOption4.value = '';
+        disabledOption4.selected = true;
+        disabledOption4.setAttribute('disabled', 'disabled');
+        disabledOption4.text = 'SUBJECT 4';
+        var disabledOption5 = document.createElement('option');
+        disabledOption5.value = '';
+        disabledOption5.selected = true;
+        disabledOption5.setAttribute('disabled', 'disabled');
+        disabledOption5.text = 'SUBJECT 5';
+        var disabledOption6 = document.createElement('option');
+        disabledOption6.value = '';
+        disabledOption6.selected = true;
+        disabledOption6.setAttribute('disabled', 'disabled');
+        disabledOption6.text = 'SUBJECT 6';
+        var disabledOption7 = document.createElement('option');
+        disabledOption7.value = '';
+        disabledOption7.selected = true;
+        disabledOption7.setAttribute('disabled', 'disabled');
+        disabledOption7.text = 'LAB 1-1';
+        var disabledOption8 = document.createElement('option');
+        disabledOption8.value = '';
+        disabledOption8.selected = true;
+        disabledOption8.setAttribute('disabled', 'disabled');
+        disabledOption8.text = 'LAB 1-2';
+        var disabledOption9 = document.createElement('option');
+        disabledOption9.value = '';
+        disabledOption9.selected = true;
+        disabledOption9.setAttribute('disabled', 'disabled');
+        disabledOption9.text = 'LAB 2-1';
+        var disabledOption10 = document.createElement('option');
+        disabledOption10.value = '';
+        disabledOption10.selected = true;
+        disabledOption10.setAttribute('disabled', 'disabled');
+        disabledOption10.text = 'LAB 2-2';
+        var disabledOption11 = document.createElement('option');
+        disabledOption11.value = '';
+        disabledOption11.selected = true;
+        disabledOption11.setAttribute('disabled', 'disabled');
+        disabledOption11.text = 'LAB 3-1';
+        var disabledOption12 = document.createElement('option');
+        disabledOption12.value = '';
+        disabledOption12.selected = true;
+        disabledOption12.setAttribute('disabled', 'disabled');
+        disabledOption12.text = 'LAB 3-2';
+        var disabledOption13 = document.createElement('option');
+        disabledOption13.value = '';
+        disabledOption13.selected = true;
+        disabledOption13.setAttribute('disabled', 'disabled');
+        disabledOption13.text = 'LAB 4-1';
+        var disabledOption14 = document.createElement('option');
+        disabledOption14.value = '';
+        disabledOption14.selected = true;
+        disabledOption14.setAttribute('disabled', 'disabled');
+        disabledOption14.text = 'LAB 4-2';
+        var disabledOption15 = document.createElement('option');
+        disabledOption15.value = '';
+        disabledOption15.selected = true;
+        disabledOption15.setAttribute('disabled', 'disabled');
+        disabledOption15.text = 'LAB 5-1';
+        var disabledOption16 = document.createElement('option');
+        disabledOption16.value = '';
+        disabledOption16.selected = true;
+        disabledOption16.setAttribute('disabled', 'disabled');
+        disabledOption16.text = 'LAB 5-2';
+        var disabledOption17 = document.createElement('option');
+        disabledOption17.value = '';
+        disabledOption17.selected = true;
+        disabledOption17.setAttribute('disabled', 'disabled');
+        disabledOption17.text = 'LAB 6-1';
+        var disabledOption18 = document.createElement('option');
+        disabledOption18.value = '';
+        disabledOption18.selected = true;
+        disabledOption18.setAttribute('disabled', 'disabled');
+        disabledOption18.text = 'LAB 6-2';
+
+
+        axios.get('/subs', {
+
+        })
+            .then(response => {
+                const options = response.data;
+                d1.innerHTML = '';
+                d1.appendChild(disabledOption1);
+                options.forEach(option => {
+                    //if (option.credits == 4) {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    d1.appendChild(optionElement);
+                    //}
+                });
+                d2.innerHTML = '';
+                d2.appendChild(disabledOption2);
+                options.forEach(option => {
+                    //if (option.credits != 4) {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    d2.appendChild(optionElement);
+                    //}
+                });
+                d3.innerHTML = '';
+                d3.appendChild(disabledOption3);
+                options.forEach(option => {
+                    //if (option.credits == 4) {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    d3.appendChild(optionElement);
+                    //}
+                });
+                d4.innerHTML = '';
+                d4.appendChild(disabledOption4);
+                options.forEach(option => {
+                    //if (option.credits != 4) {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    d4.appendChild(optionElement);
+                    //}
+                });
+                d5.innerHTML = '';
+                d5.appendChild(disabledOption5);
+                options.forEach(option => {
+                    //if (option.credits == 4) {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    d5.appendChild(optionElement);
+                    //}
+                });
+                d6.innerHTML = '';
+                d6.appendChild(disabledOption6);
+                options.forEach(option => {
+                    //if (option.credits != 4) {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    d6.appendChild(optionElement);
+                    //}
+                });
+            })
+            .catch(error => {
+                console.error('Error: ', error);
+            });
+
+        axios.get('/labs', {
+
+        })
+            .then(response => {
+                const options = response.data;
+                l11.innerHTML = '';
+                l11.appendChild(disabledOption7);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    l11.appendChild(optionElement);
+                });
+                l12.innerHTML = '';
+                l12.appendChild(disabledOption8);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    l12.appendChild(optionElement);
+                });
+                l21.innerHTML = '';
+                l21.appendChild(disabledOption9);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    l21.appendChild(optionElement);
+                });
+                l22.innerHTML = '';
+                l22.appendChild(disabledOption10);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    l22.appendChild(optionElement);
+                });
+                l31.innerHTML = '';
+                l31.appendChild(disabledOption11);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    l31.appendChild(optionElement);
+                });
+                l32.innerHTML = '';
+                l32.appendChild(disabledOption12);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    l32.appendChild(optionElement);
+                });
+                l41.innerHTML = '';
+                l41.appendChild(disabledOption13);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    l41.appendChild(optionElement);
+                });
+                l42.innerHTML = '';
+                l42.appendChild(disabledOption14);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    l42.appendChild(optionElement);
+                });
+                l51.innerHTML = '';
+                l51.appendChild(disabledOption15);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    l51.appendChild(optionElement);
+                });
+                l52.innerHTML = '';
+                l52.appendChild(disabledOption16);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    l52.appendChild(optionElement);
+                });
+                l61.innerHTML = '';
+                l61.appendChild(disabledOption17);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    l61.appendChild(optionElement);
+                });
+                l62.innerHTML = '';
+                l62.appendChild(disabledOption18);
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.subject_name;
+                    optionElement.value = option.value;
+                    l62.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error :', error);
+            })
+
+        d1.addEventListener('change', () => {
+            const selectedValue = d1.value;
+            const flags = ['mc5', 'mc6', 'ml2', 'tl1', 'tc3', 'tc4', 'thl1', 'thc1', 'thc2', 'fc7', 'fc7', 'fl2'];
+
+            axios.get('/options', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                    dd1.innerHTML = '';
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        dd1.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+
+        d2.addEventListener('change', () => {
+            const selectedValue = d2.value;
+            const flags = ['mc6', 'mc5', 'ml2', 'thc3', 'thc4', 'thl1', 'sc1', 'sc2', 'sl1', 'sc1', 'sc2', 'sl1'];
+
+            axios.get('/options', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                    dd2.innerHTML = '';
+
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        dd2.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+
+        d3.addEventListener('change', () => {
+            const selectedValue = d3.value;
+            const flags = ['mc7', 'mc7', 'ml2', 'wc5', 'wc6', 'wl2', 'sl1', 'sc2', 'thl1', 'thc3', 'thc4', 'sc1'];
+
+            axios.get('/options', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                    dd3.innerHTML = '';
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        dd3.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        d4.addEventListener('change', () => {
+            const selectedValue = d4.value;
+            const flags = ['tc1', 'tc2', 'tl1', 'wl2', 'wc6', 'wc5', 'sc4', 'sc3', 'sl1', 'sc4', 'sc3', 'sl1'];
+
+            axios.get('/options', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                    dd4.innerHTML = '';
+
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        dd4.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        d5.addEventListener('change', () => {
+            const selectedValue = d5.value;
+            const flags = ['tc1', 'tc2', 'tl1', 'wc7', 'wc7', 'wl2', 'fc5', 'fc6', 'fl2', 'sc4', 'sc3', 'sl1']
+
+            axios.get('/options', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                    dd5.innerHTML = '';
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        dd5.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        d6.addEventListener('change', () => {
+            const selectedValue = d6.value;
+            const flags = ['tc3', 'tc4', 'tl1', 'thc1', 'thc2', 'thl2', 'fl2', 'fc5', 'fc6', 'fl2', 'fc5', 'fc6'];
+
+            axios.get('/options', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                    dd6.innerHTML = '';
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        dd6.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+
+        l11.addEventListener('change', () => {
+            const flags = ['mc1', 'mc2', 'mc3', 'mc4', 'ml1'];
+            axios.get('/laboptions', {
+                params: {
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    ld11.innerHTML = '';
+
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld11.appendChild(optionElement);
+                    });
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld11_2.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+        });
+        l12.addEventListener('change', () => {
+            const flags = ['mc1', 'mc2', 'mc3', 'mc4', 'ml1'];
+            axios.get('/laboptions', {
+                params: {
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    ld12.innerHTML = '';
+
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld12.appendChild(optionElement);
+                    });
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld12_2.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+        });
+        l21.addEventListener('change', () => {
+            const flags = ['tc6', 'tc7', 'tc7', 'tc5', 'tl2'];
+            axios.get('/laboptions', {
+                params: {
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    ld21.innerHTML = '';
+
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld21.appendChild(optionElement);
+                    });
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld21_2.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+        });
+        l22.addEventListener('change', () => {
+            const flags = ['tc6', 'tc7', 'tc7', 'tc5', 'tl2'];
+            axios.get('/laboptions', {
+                params: {
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    ld22.innerHTML = '';
+
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld22.appendChild(optionElement);
+                    });
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld22_2.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+        });
+        l31.addEventListener('change', () => {
+            const flags = ['wc1', 'wc2', 'wc3', 'wc4', 'wl1'];
+            axios.get('/laboptions', {
+                params: {
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    ld31.innerHTML = '';
+
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld31.appendChild(optionElement);
+                    });
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld31_2.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+        });
+        l32.addEventListener('change', () => {
+            const flags = ['wc1', 'wc2', 'wc3', 'wc4', 'wl1'];
+            axios.get('/laboptions', {
+                params: {
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    ld32.innerHTML = '';
+
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld32.appendChild(optionElement);
+                    });
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld32_2.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+        });
+        l41.addEventListener('change', () => {
+            const flags = ['thc6', 'thc7', 'thc7', 'thc5', 'thl2'];
+            axios.get('/laboptions', {
+                params: {
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    ld41.innerHTML = '';
+
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld41.appendChild(optionElement);
+                    });
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld41_2.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+        });
+        l42.addEventListener('change', () => {
+            const flags = ['thc6', 'thc7', 'thc7', 'thc5', 'thl2'];
+            axios.get('/laboptions', {
+                params: {
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    ld42.innerHTML = '';
+
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld42.appendChild(optionElement);
+                    });
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld42_2.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+        });
+        l51.addEventListener('change', () => {
+            const flags = ['fc1', 'fc2', 'fc3', 'fc4', 'fl1'];
+            axios.get('/laboptions', {
+                params: {
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    ld51.innerHTML = '';
+
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld51.appendChild(optionElement);
+                    });
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld51_2.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+        });
+        l52.addEventListener('change', () => {
+            const flags = ['fc1', 'fc2', 'fc3', 'fc4', 'fl1'];
+            axios.get('/laboptions', {
+                params: {
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    ld52.innerHTML = '';
+
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld52.appendChild(optionElement);
+                    });
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld52_2.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+        });
+        l61.addEventListener('change', () => {
+            const flags = ['sc6', 'sc7', 'sc7', 'sc5', 'sl2'];
+            axios.get('/laboptions', {
+                params: {
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    ld61.innerHTML = '';
+
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld61.appendChild(optionElement);
+                    });
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld61_2.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+        });
+        l62.addEventListener('change', () => {
+            const flags = ['sc6', 'sc7', 'sc7', 'sc5', 'sl2'];
+            axios.get('/laboptions', {
+                params: {
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    ld62.innerHTML = '';
+
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld62.appendChild(optionElement);
+                    });
+                    options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.text = option.name;
+                        ld62_2.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+        });
+
+        const r1 = document.getElementById('rset1');
+        r1.addEventListener('click', () => {
+            const selectedValue = dd1.options[dd1.selectedIndex].text;
+            const flags = ['mc5', 'tc4', 'thc2', 'fc7'];
+
+            axios.get('/reset', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const r2 = document.getElementById('rset2');
+        r2.addEventListener('click', () => {
+            const selectedValue = dd2.options[dd2.selectedIndex].text;
+            const flags = ['mc6', 'thc3', 'sc1', 'sc1'];
+
+            axios.get('/reset', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const r3 = document.getElementById('rset3');
+        r3.addEventListener('click', () => {
+            const selectedValue = dd3.options[dd3.selectedIndex].text;
+            const flags = ['mc7', 'sc2', 'wc5', 'thc4'];
+
+            axios.get('/reset', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const r4 = document.getElementById('rset4');
+        r4.addEventListener('click', () => {
+            const selectedValue = dd4.options[dd4.selectedIndex].text;
+            const flags = ['tc1', 'wc6', 'sc3', 'sc3'];
+
+            axios.get('/reset', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const r5 = document.getElementById('rset5');
+        r5.addEventListener('click', () => {
+            const selectedValue = dd5.options[dd5.selectedIndex].text;
+            const flags = ['tc2', 'wc7', 'fc5', 'sc4'];
+
+            axios.get('/reset', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const r6 = document.getElementById('rset6');
+        r6.addEventListener('click', () => {
+            const selectedValue = dd6.options[dd6.selectedIndex].text;
+            const flags = ['tc3', 'thc1', 'fc6', 'fc6'];
+
+            axios.get('/reset', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const rl1 = document.getElementById('rsetl1');
+        rl1.addEventListener('click', () => {
+            const selectedValue = ld11.options[ld11.selectedIndex].text;
+            const flags = ['ml1'];
+
+            axios.get('/resetlab', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const rl2 = document.getElementById('rsetl2');
+        rl2.addEventListener('click', () => {
+            const selectedValue = ld12.options[ld12.selectedIndex].text;
+            const flags = ['ml1'];
+
+            axios.get('/resetlab', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const rl3 = document.getElementById('rsetl3');
+        rl3.addEventListener('click', () => {
+            const selectedValue = ld21.options[ld21.selectedIndex].text;
+            const flags = ['tl2'];
+
+            axios.get('/resetlab', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const rl4 = document.getElementById('rsetl4');
+        rl4.addEventListener('click', () => {
+            const selectedValue = ld22.options[ld22.selectedIndex].text;
+            const flags = ['tl2'];
+
+            axios.get('/resetlab', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const rl5 = document.getElementById('rsetl5');
+        rl5.addEventListener('click', () => {
+            const selectedValue = ld31.options[ld31.selectedIndex].text;
+            const flags = ['wl1'];
+
+            axios.get('/resetlab', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const rl6 = document.getElementById('rsetl6');
+        rl6.addEventListener('click', () => {
+            const selectedValue = ld32.options[ld32.selectedIndex].text;
+            const flags = ['wl1'];
+
+            axios.get('/resetlab', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const rl7 = document.getElementById('rsetl7');
+        rl7.addEventListener('click', () => {
+            const selectedValue = ld41.options[ld41.selectedIndex].text;
+            const flags = ['thl2'];
+
+            axios.get('/resetlab', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const rl8 = document.getElementById('rsetl8');
+        rl8.addEventListener('click', () => {
+            const selectedValue = ld42.options[ld42.selectedIndex].text;
+            const flags = ['thl2'];
+
+            axios.get('/resetlab', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const rl9 = document.getElementById('rsetl9');
+        rl9.addEventListener('click', () => {
+            const selectedValue = ld51.options[ld51.selectedIndex].text;
+            const flags = ['fl1'];
+
+            axios.get('/resetlab', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const rl10 = document.getElementById('rsetl10');
+        rl10.addEventListener('click', () => {
+            const selectedValue = ld52.options[ld52.selectedIndex].text;
+            const flags = ['fl1'];
+
+            axios.get('/resetlab', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const rl11 = document.getElementById('rsetl11');
+        rl11.addEventListener('click', () => {
+            const selectedValue = ld61.options[ld61.selectedIndex].text;
+            const flags = ['sl2'];
+
+            axios.get('/resetlab', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const rl12 = document.getElementById('rsetl12');
+        rl12.addEventListener('click', () => {
+            const selectedValue = ld62.options[ld62.selectedIndex].text;
+            const flags = ['sl2'];
+
+            axios.get('/resetlab', {
+                params: {
+                    selectedValue: selectedValue,
+                    flags: flags
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        const sv = document.getElementById('save');
+        const msg = document.getElementById('pop');
+
+        sv.addEventListener('click', () => {
+            const fac1 = dd1.options[dd1.selectedIndex].text;
+            const fac2 = dd2.options[dd2.selectedIndex].text;
+            const fac3 = dd3.options[dd3.selectedIndex].text;
+            const fac4 = dd4.options[dd4.selectedIndex].text;
+            const fac5 = dd5.options[dd5.selectedIndex].text;
+            const fac6 = dd6.options[dd6.selectedIndex].text;
+            const lfac11 = ld11.options[ld11.selectedIndex].text;
+            const lfac21 = ld21.options[ld21.selectedIndex].text;
+            const lfac31 = ld31.options[ld31.selectedIndex].text;
+            const lfac41 = ld41.options[ld41.selectedIndex].text;
+            const lfac51 = ld51.options[ld51.selectedIndex].text;
+            const lfac61 = ld61.options[ld61.selectedIndex].text;
+            const lfac12 = ld12.options[ld12.selectedIndex].text;
+            const lfac22 = ld22.options[ld22.selectedIndex].text;
+            const lfac32 = ld32.options[ld32.selectedIndex].text;
+            const lfac42 = ld42.options[ld42.selectedIndex].text;
+            const lfac52 = ld52.options[ld52.selectedIndex].text;
+            const lfac62 = ld62.options[ld62.selectedIndex].text;
+
+            const lfac11_2 = ld11_2.options[ld11_2.selectedIndex].text;
+            const lfac21_2 = ld21_2.options[ld21_2.selectedIndex].text;
+            const lfac31_2 = ld31_2.options[ld31_2.selectedIndex].text;
+            const lfac41_2 = ld41_2.options[ld41_2.selectedIndex].text;
+            const lfac51_2 = ld51_2.options[ld51_2.selectedIndex].text;
+            const lfac61_2 = ld61_2.options[ld61_2.selectedIndex].text;
+            const lfac12_2 = ld12_2.options[ld12_2.selectedIndex].text;
+            const lfac22_2 = ld22_2.options[ld22_2.selectedIndex].text;
+            const lfac32_2 = ld32_2.options[ld32_2.selectedIndex].text;
+            const lfac42_2 = ld42_2.options[ld42_2.selectedIndex].text;
+            const lfac52_2 = ld52_2.options[ld52_2.selectedIndex].text;
+            const lfac62_2 = ld62_2.options[ld62_2.selectedIndex].text;
+
+            const f = [fac1, fac2, fac3, fac4, fac5, fac6, lfac11, lfac21, lfac31, lfac41, lfac51, lfac61, lfac12, lfac22, lfac32, lfac42, lfac52, lfac62
+                , lfac11_2, lfac21_2, lfac31_2, lfac41_2, lfac51_2, lfac61_2, lfac12_2, lfac22_2, lfac32_2, lfac42_2, lfac52_2, lfac62_2];
+
+
+            const s1 = d1.options[d1.selectedIndex].text;
+            const s2 = d2.options[d2.selectedIndex].text;
+            const s3 = d3.options[d3.selectedIndex].text;
+            const s4 = d4.options[d4.selectedIndex].text;
+            const s5 = d5.options[d5.selectedIndex].text;
+            const s6 = d6.options[d6.selectedIndex].text;
+            const s7 = l11.options[l11.selectedIndex].text;
+            const s8 = l21.options[l21.selectedIndex].text;
+            const s9 = l31.options[l31.selectedIndex].text;
+            const s10 = l41.options[l41.selectedIndex].text;
+            const s11 = l51.options[l51.selectedIndex].text;
+            const s12 = l61.options[l61.selectedIndex].text;
+            const s13 = l12.options[l12.selectedIndex].text;
+            const s14 = l22.options[l22.selectedIndex].text;
+            const s15 = l32.options[l32.selectedIndex].text;
+            const s16 = l42.options[l42.selectedIndex].text;
+            const s17 = l52.options[l52.selectedIndex].text;
+            const s18 = l62.options[l62.selectedIndex].text;
+
+            const sub = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18];
+            const sform = [document.getElementById("s1-1").innerHTML,
+            document.getElementById("s2-1").innerHTML,
+            document.getElementById("s3-1").innerHTML,
+            document.getElementById("s4-1").innerHTML,
+            document.getElementById("s5-1").innerHTML,
+            document.getElementById("s6-1").innerHTML,
+            document.getElementById("l1-1").innerHTML,
+            document.getElementById("l2-1").innerHTML,
+            document.getElementById("l3-1").innerHTML,
+            document.getElementById("l4-1").innerHTML,
+            document.getElementById("l5-1").innerHTML,
+            document.getElementById("l6-1").innerHTML,
+            document.getElementById("l1-2").innerHTML,
+            document.getElementById("l2-2").innerHTML,
+            document.getElementById("l3-2").innerHTML,
+            document.getElementById("l4-2").innerHTML,
+            document.getElementById("l5-2").innerHTML,
+            document.getElementById("l6-2").innerHTML];
+
+            const rooms = [froom,
+                lrd1.options[lrd1.selectedIndex].value,
+                lrd2.options[lrd2.selectedIndex].value,
+                lrd3.options[lrd3.selectedIndex].value,
+                lrd4.options[lrd4.selectedIndex].value,
+                lrd5.options[lrd5.selectedIndex].value,
+                lrd6.options[lrd6.selectedIndex].value,
+                lrd7.options[lrd7.selectedIndex].value,
+                lrd8.options[lrd8.selectedIndex].value,
+                lrd9.options[lrd9.selectedIndex].value,
+                lrd10.options[lrd10.selectedIndex].value,
+                lrd11.options[lrd11.selectedIndex].value,
+                lrd12.options[lrd12.selectedIndex].value]
+
+            axios.get('/save', {
+                params: {
+                    faculty: f,
+                    subs: sub,
+                    sform: sform,
+                    rooms: rooms
+                }
+            })
+                .then(response => {
+                    const options = response.data;
+                    msg.innerHTML = 'Success';
+                })
+                .catch(error => {
+                    console.error('Error :', error);
+                    msg.innerHTML = 'ERROR';
+                });
+        });
+        function myFunction1() {
+            var x = document.getElementById("Subject1");
+            document.getElementById("s1-1").innerHTML = x.options[x.selectedIndex].value + " (" + dd1.options[dd1.selectedIndex].value + ")";
+            document.getElementById("s1-2").innerHTML = x.options[x.selectedIndex].value + " (" + dd1.options[dd1.selectedIndex].value + ")";
+            document.getElementById("s1-3").innerHTML = x.options[x.selectedIndex].value + " (" + dd1.options[dd1.selectedIndex].value + ")";
+            document.getElementById("s1-4").innerHTML = x.options[x.selectedIndex].value + " (" + dd1.options[dd1.selectedIndex].value + ")";
+            const label = document.getElementById('f1');
+            const flags = ['mc5', 'tc4', 'thc2', 'fc7'];
+            const faculty = dd1.options[dd1.selectedIndex].text;
+            axios.get('/settheory', {
+                params: {
+                    flags: flags,
+                    selected: faculty,
+                    sform: d1.options[d1.selectedIndex].value,
+                    room: froom
+                }
+            })
+                .then(response => {
+                    label.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('Error :', error);
+                })
+        }
+
+        function myFunction2() {
+            var x = document.getElementById("Subject2");
+            document.getElementById("s2-1").innerHTML = x.options[x.selectedIndex].value + " (" + dd2.options[dd2.selectedIndex].value + ")";
+            document.getElementById("s2-2").innerHTML = x.options[x.selectedIndex].value + " (" + dd2.options[dd2.selectedIndex].value + ")";
+            document.getElementById("s2-3").innerHTML = x.options[x.selectedIndex].value + " (" + dd2.options[dd2.selectedIndex].value + ")";
+            //document.getElementById("s2-4").innerHTML = x.options[x.selectedIndex].value + " (" + dd2.options[dd2.selectedIndex].value + ")";
+            const label2 = document.getElementById('f2');
+            const flags = ['mc6', 'thc3', 'sc1', 'sc1'];
+            const faculty = dd2.options[dd2.selectedIndex].text;
+            axios.get('/settheory', {
+                params: {
+                    flags: flags,
+                    selected: faculty,
+                    sform: d2.options[d2.selectedIndex].value,
+                    room: froom
+                }
+            })
+                .then(response => {
+                    label2.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('Error :', error);
+                });
+        }
+        function myFunction3() {
+            var x = document.getElementById("Subject3");
+            document.getElementById("s3-1").innerHTML = x.options[x.selectedIndex].value + " (" + dd3.options[dd3.selectedIndex].value + ")";
+            document.getElementById("s3-2").innerHTML = x.options[x.selectedIndex].value + " (" + dd3.options[dd3.selectedIndex].value + ")";
+            document.getElementById("s3-3").innerHTML = x.options[x.selectedIndex].value + " (" + dd3.options[dd3.selectedIndex].value + ")";
+            document.getElementById("s3-4").innerHTML = x.options[x.selectedIndex].value + " (" + dd3.options[dd3.selectedIndex].value + ")";
+            const label3 = document.getElementById('f3');
+            const flags = ['mc7', 'sc2', 'wc5', 'thc4'];
+            const faculty = dd3.options[dd3.selectedIndex].text;
+            axios.get('/settheory', {
+                params: {
+                    flags: flags,
+                    selected: faculty,
+                    sform: d3.options[d3.selectedIndex].value,
+                    room: froom
+                }
+            })
+                .then(response => {
+                    label3.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('Error :', error);
+                });
+        }
+        function myFunction4() {
+            var x = document.getElementById("Subject4");
+            document.getElementById("s4-1").innerHTML = x.options[x.selectedIndex].value + " (" + dd4.options[dd4.selectedIndex].value + ")";
+            document.getElementById("s4-2").innerHTML = x.options[x.selectedIndex].value + " (" + dd4.options[dd4.selectedIndex].value + ")";
+            document.getElementById("s4-3").innerHTML = x.options[x.selectedIndex].value + " (" + dd4.options[dd4.selectedIndex].value + ")";
+            //document.getElementById("s4-4").innerHTML = x.options[x.selectedIndex].value + " (" + dd4.options[dd4.selectedIndex].value + ")";
+            const label4 = document.getElementById('f4');
+            const flags = ['tc1', 'wc6', 'sc3', 'sc3'];
+            const faculty = dd4.options[dd4.selectedIndex].text;
+            axios.get('/settheory', {
+                params: {
+                    flags: flags,
+                    selected: faculty,
+                    sform: d4.options[d4.selectedIndex].value,
+                    room: froom
+                }
+            })
+                .then(response => {
+                    label4.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('Error :', error);
+                });
+        }
+        function myFunction5() {
+            var x = document.getElementById("Subject5");
+            document.getElementById("s5-1").innerHTML = x.options[x.selectedIndex].value + " (" + dd5.options[dd5.selectedIndex].value + ")";
+            document.getElementById("s5-2").innerHTML = x.options[x.selectedIndex].value + " (" + dd5.options[dd5.selectedIndex].value + ")";
+            document.getElementById("s5-3").innerHTML = x.options[x.selectedIndex].value + " (" + dd5.options[dd5.selectedIndex].value + ")";
+            document.getElementById("s5-4").innerHTML = x.options[x.selectedIndex].value + " (" + dd5.options[dd5.selectedIndex].value + ")";
+            const label5 = document.getElementById('f5');
+            const flags = ['tc2', 'wc7', 'fc5', 'sc4'];
+            const faculty = dd5.options[dd5.selectedIndex].text;
+            axios.get('/settheory', {
+                params: {
+                    flags: flags,
+                    selected: faculty,
+                    sform: d5.options[d5.selectedIndex].value,
+                    room: froom
+                }
+            })
+                .then(response => {
+                    label5.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('Error :', error);
+                });
+        }
+        function myFunction6() {
+            var x = document.getElementById("Subject6");
+            document.getElementById("s6-1").innerHTML = x.options[x.selectedIndex].value + " (" + dd6.options[dd6.selectedIndex].value + ")";
+            document.getElementById("s6-2").innerHTML = x.options[x.selectedIndex].value + " (" + dd6.options[dd6.selectedIndex].value + ")";
+            document.getElementById("s6-3").innerHTML = x.options[x.selectedIndex].value + " (" + dd6.options[dd6.selectedIndex].value + ")";
+            //document.getElementById("s6-4").innerHTML = x.options[x.selectedIndex].value + " (" + dd6.options[dd6.selectedIndex].value + ")";
+            const label6 = document.getElementById('f6');
+            const flags = ['tc3', 'thc1', 'fc6', 'fc6'];
+            const faculty = dd6.options[dd6.selectedIndex].text;
+            axios.get('/settheory', {
+                params: {
+                    flags: flags,
+                    selected: faculty,
+                    sform: d6.options[d6.selectedIndex].value,
+                    room: froom
+                }
+            })
+                .then(response => {
+                    label6.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('Error :', error);
+                });
+        }
+        function myFunctionl11() {
+            var x = document.getElementById("Lab-1-1");
+            document.getElementById("l1-1").innerHTML = x.options[x.selectedIndex].value + " (" + ld11.options[ld11.selectedIndex].value + ") (" + ld11_2.options[ld11_2.selectedIndex].value + ")" + lrd1.options[lrd1.selectedIndex].value;
+            const label7 = document.getElementById('f7');
+            const flags = 'ml1';
+            const faculty = [ld11.options[ld11.selectedIndex].text, ld11_2.options[ld11_2.selectedIndex].text];
+            const short = '(' + ld11.options[ld11.selectedIndex].value + ') (' + ld11_2.options[ld11_2.selectedIndex].value + ')';
+            axios.get('/setlab', {
+                params: {
+                    selected: faculty,
+                    flags: flags,
+                    short: short,
+                    sform: l11.options[l11.selectedIndex].value,
+                    room: lrd1.options[lrd1.selectedIndex].text,
+                }
+            })
+                .then(response => {
+                    label7.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('error :', error);
+                });
+
+        }
+
+        function myFunctionl12() {
+            var x = document.getElementById("Lab-1-2");
+            document.getElementById("l1-2").innerHTML = x.options[x.selectedIndex].value + " (" + ld12.options[ld12.selectedIndex].value + ") (" + ld12_2.options[ld12_2.selectedIndex].value + ")" + lrd7.options[lrd7.selectedIndex].value;
+            const label8 = document.getElementById('f8');
+            const flags = 'ml1';
+            const faculty = [ld12.options[ld12.selectedIndex].text, ld12_2.options[ld12_2.selectedIndex].text];
+            const short = '(' + ld12.options[ld12.selectedIndex].value + ') (' + ld12_2.options[ld12_2.selectedIndex].value + ')';
+            axios.get('/setlab', {
+                params: {
+                    selected: faculty,
+                    flags: flags,
+                    sform: l11.options[l11.selectedIndex].value,
+                    room: lrd7.options[lrd7.selectedIndex].text,
+                    short: short
+                }
+            })
+                .then(response => {
+                    label8.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('error :', error);
+                });
+
+        }
+
+        function myFunctionl21() {
+            var x = document.getElementById("Lab-2-1");
+            document.getElementById("l2-1").innerHTML = x.options[x.selectedIndex].value + " (" + ld21.options[ld21.selectedIndex].value + ") (" + ld21_2.options[ld21_2.selectedIndex].value + ")" + lrd2.options[lrd2.selectedIndex].value;
+            const flags = 'tl2';
+            const label9 = document.getElementById('f9');
+            const faculty = [ld21.options[ld21.selectedIndex].text, ld21_2.options[ld21_2.selectedIndex].text];
+            const short = '(' + ld21.options[ld21.selectedIndex].value + ') (' + ld21_2.options[ld21_2.selectedIndex].value + ')';
+            axios.get('/setlab', {
+                params: {
+                    selected: faculty,
+                    flags: flags,
+                    sform: l21.options[l21.selectedIndex].value,
+                    room: lrd2.options[lrd2.selectedIndex].text,
+                    short: short
+                }
+            })
+                .then(response => {
+                    label9.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('error :', error);
+                });
+
+
+        }
+
+        function myFunctionl22() {
+            var x = document.getElementById("Lab-2-2");
+            document.getElementById("l2-2").innerHTML = x.options[x.selectedIndex].value + " (" + ld22.options[ld22.selectedIndex].value + ") (" + ld22_2.options[ld22_2.selectedIndex].value + ")" + lrd8.options[lrd8.selectedIndex].value;
+            const flags = 'tl2';
+            const label10 = document.getElementById('f10');
+            const faculty = [ld22.options[ld22.selectedIndex].text, ld22_2.options[ld22_2.selectedIndex].text];
+            const short = '(' + ld22.options[ld22.selectedIndex].value + ') (' + ld22_2.options[ld22_2.selectedIndex].value + ')';
+            axios.get('/setlab', {
+                params: {
+                    selected: faculty,
+                    flags: flags,
+                    sform: l22.options[l22.selectedIndex].value,
+                    room: lrd8.options[lrd8.selectedIndex].text,
+                    short: short
+                }
+            })
+                .then(response => {
+                    label10.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('error :', error);
+                });
+
+        }
+
+
+        function myFunctionl31() {
+            var x = document.getElementById("Lab-3-1");
+            document.getElementById("l3-1").innerHTML = x.options[x.selectedIndex].value + " (" + ld31.options[ld31.selectedIndex].value + ") (" + ld31_2.options[ld31_2.selectedIndex].value + ")" + lrd3.options[lrd3.selectedIndex].value;
+            const flags = 'wl1';
+            const label11 = document.getElementById('f11');
+            const faculty = [ld31.options[ld31.selectedIndex].text, ld31_2.options[ld31_2.selectedIndex].text];
+            const short = '(' + ld31.options[ld31.selectedIndex].value + ') (' + ld31_2.options[ld31_2.selectedIndex].value + ')';
+            axios.get('/setlab', {
+                params: {
+                    selected: faculty,
+                    flags: flags,
+                    sform: l31.options[l31.selectedIndex].value,
+                    room: lrd3.options[lrd3.selectedIndex].text,
+                    short: short
+                }
+            })
+                .then(response => {
+                    label11.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('error :', error);
+                });
+        }
+
+
+        function myFunctionl32() {
+            var x = document.getElementById("Lab-3-2");
+            document.getElementById("l3-2").innerHTML = x.options[x.selectedIndex].value + " (" + ld32.options[ld32.selectedIndex].value + ") (" + ld32_2.options[ld32_2.selectedIndex].value + ")" + lrd9.options[lrd9.selectedIndex].value;
+            const flags = 'wl1';
+            const label12 = document.getElementById('f12');
+            const faculty = [ld32.options[ld32.selectedIndex].text, ld32_2.options[ld32_2.selectedIndex].text];
+            const short = '(' + ld32.options[ld32.selectedIndex].value + ') (' + ld32_2.options[ld32_2.selectedIndex].value + ')';
+            axios.get('/setlab', {
+                params: {
+                    selected: faculty,
+                    flags: flags,
+                    sform: l32.options[l32.selectedIndex].value,
+                    room: lrd9.options[lrd9.selectedIndex].text,
+                    short: short
+                }
+            })
+                .then(response => {
+                    label12.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('error :', error);
+                });
+        }
+
+
+        function myFunctionl41() {
+            var x = document.getElementById("Lab-4-1");
+            document.getElementById("l4-1").innerHTML = x.options[x.selectedIndex].value + " (" + ld41.options[ld41.selectedIndex].value + ") (" + ld41_2.options[ld41_2.selectedIndex].value + ")" + lrd4.options[lrd4.selectedIndex].value;
+            const flags = 'thl2';
+            const label13 = document.getElementById('f13');
+            const faculty = [ld41.options[ld41.selectedIndex].text, ld41_2.options[ld41_2.selectedIndex].text];
+            const short = '(' + ld41.options[ld41.selectedIndex].value + ') (' + ld41_2.options[ld41_2.selectedIndex].value + ')';
+            axios.get('/setlab', {
+                params: {
+                    selected: faculty,
+                    flags: flags,
+                    sform: l41.options[l41.selectedIndex].value,
+                    room: lrd4.options[lrd4.selectedIndex].text,
+                    short: short
+                }
+            })
+                .then(response => {
+                    label13.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('error :', error);
+                });
+        }
+
+
+        function myFunctionl42() {
+            var x = document.getElementById("Lab-4-2");
+            document.getElementById("l4-2").innerHTML = x.options[x.selectedIndex].value + " (" + ld42.options[ld42.selectedIndex].value + ") (" + ld42_2.options[ld42_2.selectedIndex].value + ")" + lrd10.options[lrd10.selectedIndex].value;
+            const flags = 'thl2';
+            const label14 = document.getElementById('f14');
+            const faculty = [ld42.options[ld42.selectedIndex].text, ld42_2.options[ld42_2.selectedIndex].text];
+            const short = '(' + ld42.options[ld42.selectedIndex].value + ') (' + ld42_2.options[ld42_2.selectedIndex].value + ')';
+            axios.get('/setlab', {
+                params: {
+                    selected: faculty,
+                    flags: flags,
+                    sform: l42.options[l42.selectedIndex].value,
+                    room: lrd10.options[lrd10.selectedIndex].text,
+                    short: short
+                }
+            })
+                .then(response => {
+                    label14.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('error :', error);
+                });
+        }
+
+
+        function myFunctionl51() {
+            var x = document.getElementById("Lab-5-1");
+            document.getElementById("l5-1").innerHTML = x.options[x.selectedIndex].value + " (" + ld51.options[ld51.selectedIndex].value + ") (" + ld51_2.options[ld51_2.selectedIndex].value + ")" + lrd5.options[lrd5.selectedIndex].value;
+            const flags = 'fl1';
+            const label15 = document.getElementById('f15');
+            const faculty = [ld51.options[ld51.selectedIndex].text, ld51_2.options[ld51_2.selectedIndex].text];
+            const short = '(' + ld51.options[ld51.selectedIndex].value + ') (' + ld51_2.options[ld51_2.selectedIndex].value + ')';
+            axios.get('/setlab', {
+                params: {
+                    selected: faculty,
+                    flags: flags,
+                    sform: l51.options[l51.selectedIndex].value,
+                    room: lrd5.options[lrd5.selectedIndex].text,
+                    short: short
+                }
+            })
+                .then(response => {
+                    label15.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('error :', error);
+                });
+        }
+
+
+        function myFunctionl52() {
+            var x = document.getElementById("Lab-5-2");
+            document.getElementById("l5-2").innerHTML = x.options[x.selectedIndex].value + " (" + ld52.options[ld52.selectedIndex].value + ") (" + ld52_2.options[ld52_2.selectedIndex].value + ")" + lrd11.options[lrd11.selectedIndex].value;
+            const flags = 'fl1';
+            const label16 = document.getElementById('f16');
+            const faculty = [ld52.options[ld52.selectedIndex].text, ld52_2.options[ld52_2.selectedIndex].text];
+            const short = '(' + ld52.options[ld52.selectedIndex].value + ') (' + ld52_2.options[ld52_2.selectedIndex].value + ')';
+            axios.get('/setlab', {
+                params: {
+                    selected: faculty,
+                    flags: flags,
+                    sform: l52.options[l52.selectedIndex].value,
+                    room: lrd11.options[lrd11.selectedIndex].text,
+                    short: short
+                }
+            })
+                .then(response => {
+                    label16.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('error :', error);
+                });
+        }
+
+
+        function myFunctionl61() {
+            var x = document.getElementById("Lab-6-1");
+            document.getElementById("l6-1").innerHTML = x.options[x.selectedIndex].value + " (" + ld61.options[ld61.selectedIndex].value + ") (" + ld61_2.options[ld61_2.selectedIndex].value + ")" + lrd6.options[lrd6.selectedIndex].value;
+            const flags = 'sl2';
+            const label17 = document.getElementById('f17');
+            const faculty = [ld61.options[ld61.selectedIndex].text, ld61_2.options[ld61_2.selectedIndex].text];
+            const short = '(' + ld61.options[ld61.selectedIndex].value + ') (' + ld61_2.options[ld61_2.selectedIndex].value + ')';
+            axios.get('/setlab', {
+                params: {
+                    selected: faculty,
+                    flags: flags,
+                    sform: l61.options[l61.selectedIndex].value,
+                    room: lrd6.options[lrd6.selectedIndex].text,
+                    short: short
+                }
+            })
+                .then(response => {
+                    label17.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('error :', error);
+                });
+        }
+
+
+        function myFunctionl62() {
+            var x = document.getElementById("Lab-6-2");
+            document.getElementById("l6-2").innerHTML = x.options[x.selectedIndex].value + " (" + ld62.options[ld62.selectedIndex].value + ") (" + ld62_2.options[ld62_2.selectedIndex].value + ")" + lrd12.options[lrd12.selectedIndex].value;
+            const flags = 'sl2';
+            const label18 = document.getElementById('f18');
+            const faculty = [ld62.options[ld62.selectedIndex].text, ld62_2.options[ld62_2.selectedIndex].text];
+            const short = '(' + ld62.options[ld62.selectedIndex].value + ') (' + ld62_2.options[ld62_2.selectedIndex].value + ')';
+            axios.get('/setlab', {
+                params: {
+                    selected: faculty,
+                    flags: flags,
+                    sform: l62.options[l62.selectedIndex].value,
+                    room: lrd12.options[lrd12.selectedIndex].text,
+                    short: short
+                }
+            })
+                .then(response => {
+                    label18.innerHTML = "COMPLETED";
+                })
+                .catch(error => {
+                    console.error('error :', error);
+                });
+        }
+
+        // axios.get('/room', {
+        //     params: {
+        //         flag: ['mc5', 'mc6', 'mc7', 'mc7', 'tc1', 'tc2', 'tc3', 'tc4', 'wc5', 'wc6', 'wc7', 'wc7', 'thc1', 'thc2', 'thc3', 'thc4', 'fc5', 'fc6', 'fc7', 'fc7', 'sc1', 'sc2', 'sc3', 'sc4', 'ml1', 'tl2', 'wl1', 'thl2', 'fl1', 'sl2']
+        //     }
+        // })
+        //     .then(response => {
+        //         const options = response.data;
+        //         options.forEach(option => {
+        //             const optionElement = document.createElement('option');
+        //             optionElement.text = option.room;
+        //             optionElement.value = option.room;
+        //             rd.appendChild(optionElement);
+        //         });
+        //     })
+        //     .catch(error => {
+        //         console.error('error :', error);
+        //     });
+        axios.get('/labroom', {
+            params: {
+                flag: 'ml1'
+            }
+        })
+            .then(response => {
+                const options = response.data;
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.room;
+                    optionElement.value = option.room;
+                    lrd1.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('error :', error);
+            });
+        axios.get('/labroom', {
+            params: {
+                flag: 'ml1'
+            }
+        })
+            .then(response => {
+                const options = response.data;
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.room;
+                    optionElement.value = option.room;
+                    lrd2.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('error :', error);
+            });
+        axios.get('/labroom', {
+            params: {
+                flag: 'tl2'
+            }
+        })
+            .then(response => {
+                const options = response.data;
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.room;
+                    optionElement.value = option.room;
+                    lrd3.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('error :', error);
+            });
+        axios.get('/labroom', {
+            params: {
+                flag: 'tl2'
+            }
+        })
+            .then(response => {
+                const options = response.data;
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.room;
+                    optionElement.value = option.room;
+                    lrd4.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('error :', error);
+            });
+        axios.get('/labroom', {
+            params: {
+                flag: 'wl1'
+            }
+        })
+            .then(response => {
+                const options = response.data;
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.room;
+                    optionElement.value = option.room;
+                    lrd5.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('error :', error);
+            });
+        axios.get('/labroom', {
+            params: {
+                flag: 'wl1'
+            }
+        })
+            .then(response => {
+                const options = response.data;
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.room;
+                    optionElement.value = option.room;
+                    lrd6.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('error :', error);
+            });
+        axios.get('/labroom', {
+            params: {
+                flag: 'tl2'
+            }
+        })
+            .then(response => {
+                const options = response.data;
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.room;
+                    optionElement.value = option.room;
+                    lrd7.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('error :', error);
+            });
+        axios.get('/labroom', {
+            params: {
+                flag: 'tl2'
+            }
+        })
+            .then(response => {
+                const options = response.data;
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.room;
+                    optionElement.value = option.room;
+                    lrd8.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('error :', error);
+            });
+        axios.get('/labroom', {
+            params: {
+                flag: 'fl1'
+            }
+        })
+            .then(response => {
+                const options = response.data;
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.room;
+                    optionElement.value = option.room;
+                    lrd9.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('error :', error);
+            });
+        axios.get('/labroom', {
+            params: {
+                flag: 'fl1'
+            }
+        })
+            .then(response => {
+                const options = response.data;
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.room;
+                    optionElement.value = option.room;
+                    lrd10.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('error :', error);
+            });
+        axios.get('/labroom', {
+            params: {
+                flag: 'sl2'
+            }
+        })
+            .then(response => {
+                const options = response.data;
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.room;
+                    optionElement.value = option.room;
+                    lrd11.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('error :', error);
+            });
+        axios.get('/labroom', {
+            params: {
+                flag: 'sl2'
+            }
+        })
+            .then(response => {
+                const options = response.data;
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.text = option.room;
+                    optionElement.value = option.room;
+                    lrd12.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('error :', error);
+            });
+    </script>
+</body>
+
+</html>
