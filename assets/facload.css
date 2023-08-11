@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  /* font-family: 'Architects Daughter', cursive; */
+  font-family: 'Oswald', sans-serif;
+  scroll-behavior: smooth;
+  font-size: 20px;
+}
+
+header ul li a:hover {
+  color: rgb(237, 158, 105);
+
+}
+
+body {
+  background-image: url(pic4.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px 100px;
+  z-index: 1000;
+  align-items: top-center;
+  justify-content: space-between;
+  display: flex;
+  transition: 0.5s;
+  /* background-color: aliceblue; */
+}
+
+.tt_logo2 {
+  width: 230px;
+  /* Adjust the width as needed */
+  margin-left: 120px;
+}
+
+.tt_logo {
+  height: 80px;
+  width: 340px;
+  float: left;
+}
+
+@media print {
+  .no-print {
+    content: no-print url(pic4.jpg);
+    display: none;
+  }
+
+  body {
+    background-image: none;
+  }
+}
+
+.tt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5%;
+  padding: 40px 100px;
+  z-index: 1000;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255, 0.8);
+  background-size: cover;
+  display: flex;
+  transition: 0.5s;
+  /* background-color: aliceblue; */
+}
+
+header .logo {
+  color: #a64320;
+  font-size: 26px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-family: 'Stick No Bills', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+header ul {
+  position: relative;
+  display: flex;
+}
+
+header ul li {
+  position: relative;
+  list-style: none;
+}
+
+header ul li a {
+  position: relative;
+  display: inline-block;
+  margin: 0px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #cf8806;
+  font-size: 18px;
+  text-shadow: 0.3px 0.3px 0.3px rgba(0, 0, 0, 0.5);
+}
+
+a {
+  text-decoration: none !important;
+  color: white;
+
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: 600px;
+}
+
+
+#factable {
+  width: 40%;
+  border-collapse: collapse;
+  margin-top: 200px;
+
+}
+
+
+#factable thead th {
+  padding: 8px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+
+
+#factable tbody {
+  font-family: Arial, sans-serif;
+}
+
+
+#factable tbody tr {
+  background-color: #fff;
+}
+
+
+#factable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+#factable tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+
+#factable tbody td:first-child {
+  font-weight: bold;
+}
+
+
+#factable tbody td:last-child {
+  font-weight: bold;
+  text-align: center;
+}
+
+button {
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: #f6a028;
+  color: #fff;
+  border: none;
+}
+

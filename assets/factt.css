@@ -1,0 +1,23 @@
+*{
+  font-size: 20px;
+}
+body {
+    background-color: #cacaca;
+    color: #333;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  button {
+    padding: 5px 10px;
+    font-size: 12px;
+    background-color: #f6a028;
+    color: #fff;
+    border: none;
+  }#save{
+    margin-left: auto;
+    margin-right: auto;
+    /* display: flex; */
+    justify-items: center;
+  
+  }

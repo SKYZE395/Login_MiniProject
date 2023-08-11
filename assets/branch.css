@@ -1,0 +1,465 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+*{
+  font-size: 20px;
+}
+body{
+    background: url(/assets/pic3.jpg)no-repeat center/ cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+  h3 {
+    position: relative;
+    text-align: center;
+    color: #ffffff;
+    font-size: 50px;
+    font-family: "Cormorant Garamond", serif;
+    text-shadow: 4px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .frame {
+    width: 80%;
+    margin: 40px auto;
+    text-align: center;
+  }
+  button {
+    margin: 20px;
+    top: 200px;
+  }
+  .custom-btn {
+    width: 130px;
+    height: 40px;
+    /*color: #000000;*/
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+  }
+
+  a{
+    text-decoration: none !important;
+    color: white;
+    font-size: 16px;
+  }
+  
+  .btn-1 {
+    background: goldenrod;
+    border: none;
+    color: white;
+  }
+  .btn-1:hover {
+     background: gold;
+  }
+  
+  .btn-2 {
+    background: palevioletred;
+    border: none;
+    color: white;
+  }
+  .btn-2:hover {
+    background: pink;
+ }
+ 
+  .btn-3 {
+    background: rgb(0,172,238);
+  background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    
+  }
+  .btn-3 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .btn-3:before,
+  .btn-3:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+     background: rgba(2,126,251,1);
+    transition: all 0.3s ease;
+  }
+  .btn-3:before {
+    height: 0%;
+    width: 2px;
+  }
+  .btn-3:after {
+    width: 0%;
+    height: 2px;
+  }
+  .btn-3:hover{
+     background: transparent;
+    box-shadow: none;
+  }
+  .btn-3:hover:before {
+    height: 100%;
+  }
+  .btn-3:hover:after {
+    width: 100%;
+  }
+  .btn-3 span:hover{
+     color: rgba(2,126,251,1);
+  }
+  .btn-3 span:before,
+  .btn-3 span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+     background: rgba(2,126,251,1);
+    transition: all 0.3s ease;
+  }
+  .btn-3 span:before {
+    width: 2px;
+    height: 0%;
+  }
+  .btn-3 span:after {
+    width: 0%;
+    height: 2px;
+  }
+  .btn-3 span:hover:before {
+    height: 100%;
+  }
+  .btn-3 span:hover:after {
+    width: 100%;
+  }
+  
+  .btn-4 {
+    background: rgb(247, 69, 9);
+    border: none;
+    color: white;
+  }
+  .btn-4:hover {
+    background: rgb(241, 99, 28);
+ }
+  
+  .btn-5 {
+    background: gray;
+    border: none;
+    color: white;
+  }
+  .btn-5:hover {
+    background: lightslategray;
+ }
+
+  body {
+    margin: 0;
+    padding: 0;
+    
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: "Jost", sans-serif;
+    background-size: cover;
+    background-image: url("pic3.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    border-left: 10px;
+    border-right: 10px;
+  }
+
+  h3{
+    margin-top: 10px;
+    padding: 10px;
+    top: 230px;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Architects Daughter', cursive; */
+    font-family: 'Oswald', sans-serif;
+    scroll-behavior: smooth;
+}
+/* body{
+    background: url(/assets/wlc.jpg) center no-repeat;
+    height: 400px;
+    
+} */
+header ul li a:hover{
+    color: rgb(237, 158, 105);
+
+}
+
+.banner{
+    position: relative;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: right;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background: url(bg.png);
+    opacity: 70%; */
+} 
+
+.tt_logo2 {
+    width: 230px; /* Adjust the width as needed */
+    margin-left: 92px;
+  }
+
+.banner h2{
+    font-size: 3em;
+    color: #f47c3b;
+    line-height: 1.5em;
+    font-weight: 500;
+    opacity: 100%;
+}
+.banner h2 span{
+    font-size: 1.5em;
+    font-weight: 700;
+    
+}
+.banner h3{
+    font-size: 1.5em;
+    color: #000000;
+    font-weight: 500;
+}
+
+h6{
+    background-color: rgb(139, 179, 240);
+}
+
+div #day{
+    background-color: rgb(244, 145, 47);
+    border: 5px solid;
+}
+
+div #break{
+    background-color: rgb(147, 140, 140);
+    border: 5px solid;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    z-index: 1000;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    transition: 0.5s;
+    background-color: rgb(255,255,255,0.6) ; 
+}
+
+.tt_logo{
+    height: 80px;
+    width: 340px;
+    float: left;
+}
+
+@media print {
+    .no-print {
+      display: none;
+    }
+}
+
+.tt{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5%;
+    padding: 40px 100px;
+    z-index: 1000;
+    align-items: center;
+    justify-content: space-between;
+    background-size: cover;
+    display: flex;
+    transition: 0.5s;
+    /* background-color: aliceblue; */
+}
+
+header.sticky{
+    background: #bc7878;
+    padding: 20px 100px;
+    box-shadow: 0 5px 20px rgb(0,0,0,0.1);
+}
+
+.row{
+    height:5%;
+}
+
+.container{
+    position:relative;
+    margin-top:80px;
+}
+
+header .logo{
+    color: #a64320;
+    font-size: 26px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-family: 'Stick No Bills', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+header.sticky .logo{
+    color: #111;
+
+}
+header ul{
+    position: relative;
+    display: flex;
+
+}
+header ul li{
+    position: relative;
+    list-style: none;
+}
+header ul li a{
+    position: relative;
+    display: inline-block;
+    margin: 0px 15px;
+    text-decoration: none;
+    color: #cf8806;
+    font-size: 18px;
+    text-shadow: 0.3px 0.3px 0.3px rgba(0, 0, 0, 0.5);
+
+}
+header.sticky ul li a{
+    color: #111;
+}
+.heading{
+    width: 100%;
+    margin-bottom: 30px;
+    color: #111;
+    text-align: center;
+}
+.heading h2{
+    font-weight: 600;
+    font-size: 30px;
+}
+.content{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+    padding: 20px;
+}
+.contentBx{
+    padding-right: 30px;
+}
+.contentBx h3{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.w50{
+    min-width: 50%;
+}
+
+.services{
+    background: #111;
+}
+.heading.white{
+    color: #934e4e;
+
+}
+.heading .btn{
+    border-radius: 20px;
+}
+
+/* #bgd{
+    width: max-content;
+    height: max-content;
+} */
+
+.choose{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding: 25px;
+}
+.formc{
+    margin-left: 75px;
+    
+}
+
+.faculty
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding: 28px;
+}
+.show{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding: 25px;
+
+}
+
+body {
+  background: url(/assets/pic3.jpg)no-repeat center/ cover; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+select {
+  width: 200px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #f88f1e;
+  border-radius: 5px;
+  background-color: white;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff6600; /* Orange button theme */
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #cc5500; /* Darker orange on hover */
+}
+h3 {
+  position: relative;
+  text-align: center;
+  color: #ffffff;
+  font-size: 50px;
+  font-family: "Cormorant Garamond", serif;
+  text-shadow: 4px 2px 4px rgba(0, 0, 0, 0.5);
+}
+h1{
+  text-align: center;
+  color: #ffffff;
+  font-size: 50px;
+  font-family: "Cormorant Garamond", serif;
+  text-shadow: 4px 2px 4px rgba(0, 0, 0, 0.5);
+}

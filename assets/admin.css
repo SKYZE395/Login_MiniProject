@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    /* font-family: 'Architects Daughter', cursive; */
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    scroll-behavior: smooth;
+}
+
+header ul li a:hover{
+    color: rgb(237, 158, 105);
+
+}
+
+body{
+  background-image: url(pic4.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    z-index:1000;
+    align-items: top-center;
+    justify-content: space-between;
+    display: flex;
+    transition: 0.5s;
+    /* background-color: aliceblue; */
+}
+
+.tt_logo2 {
+  width: 230px; /* Adjust the width as needed */
+  margin-left: 120px;
+}
+
+.tt_logo{
+    height: 80px;
+    width: 340px;
+    float: left;
+}
+
+@media print {
+    .no-print {
+      display: none;
+    }
+}
+
+.tt{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5%;
+    padding: 40px 100px;
+    z-index: 1000;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(255,255,255,0.8) ; 
+    background-size: cover;
+    display: flex;
+    transition: 0.5s;
+    /* background-color: aliceblue; */
+}
+
+header.sticky{
+    background: #bc7878;
+    padding: 20px 100px;
+    box-shadow: 0 5px 20px rgb(0,0,0,0.1);
+}
+
+header .logo{
+    color: #a64320;
+    font-size: 26px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-family: 'Stick No Bills', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+header.sticky .logo{
+    color: #111;
+
+}
+header ul{
+    position: relative;
+    display: flex;
+
+}
+header ul li{
+    position: relative;
+    list-style: none;
+}
+header ul li a{
+    position: relative;
+    display: inline-block;
+    margin: 0px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #cf8806;
+    font-size: 18px;
+    text-shadow: 0.2px 0.2px 0.2px rgba(0, 0, 0, 0.5);
+
+}
+header.sticky ul li a{
+    color: #111;
+}
+.heading{
+    width: 100%;
+    margin-bottom: 30px;
+    color: #111;
+    text-align: center;
+}
+.heading h2{
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.heading.white{
+    color: #934e4e;
+
+}
+.heading .btn{
+    border-radius: 20px;
+}
+
+
+.faculty {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 10px;
+    width: 500px;
+    border: 1px solid #ccc;
+    background-color: #c8c5c5;
+    opacity: 90%;
+    border-radius: 10px; 
+   
+  }
+  
+  
+  .faculty h3 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  
+  .faculty input[type="text"] {
+    margin: 5px;
+    padding: 5px;
+    width: 150px;
+  }
+  
+ 
+  .faculty select {
+    margin: 5px;
+    padding: 5px;
+    width: 150px;
+  }
+  
+  
+  .faculty button {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #c6530b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  a{
+    text-decoration: none !important;
+    color: white;
+  
+  }
+  
+  
+  .faculty label {
+    margin-left: 10px;
+    color: #f00;
+  }
+
+  
+.container {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    height: 100vh;
+    margin-top: 600px;
+  }
+  
+  
+  #factable {
+    width: 40%;
+    border-collapse: collapse;
+    margin-top: 200px;
+
+  }
+  
+  
+  #factable thead th {
+    padding: 8px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  
+  #factable tbody {
+    font-family: Arial, sans-serif;
+  }
+  
+  
+  #factable tbody tr {
+    background-color: #fff;
+  }
+  
+  
+  #factable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  
+  #factable tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  
+  #factable tbody td:first-child {
+    font-weight: bold;
+  }
+  
+  
+  #factable tbody td:last-child {
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+
+  #labtable {
+    border-collapse: collapse;
+    width: 100%;
+  }
+ 
+  #labtable th {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  #labtable tbody {
+    border: 1px solid #ccc;
+  }
+
+  #labtable td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  #labtable td:first-child {
+    font-weight: 100;
+  }
+  
+  #labtable tr:first-child td {
+    font-weight: 100;
+  }
+  
+  #labtable tr:nth-child(2) td {
+    font-weight:100;
+  }
+  
+  #labtable tr:nth-child(odd) td {
+    background-color: #f9f9f9;
+  }
+  
+  #labtable td {
+    background-color: #eeeff3;
+  }
+  
+   /* Global Styles */
+   body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+    color: #fff;
+}
+
+/* Container Styles */
+.faculty {
+    position: relative;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f4f0f0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Heading Styles */
+.faculty h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ff8c00;
+}
+
+/* Button Styles */
+.faculty button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 25px;
+    width: 200px;
+    background-color: #ff8c00;
+    color: #111;
+    border: none;
+    border-radius: 10px;
+    font-size: 12px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.faculty button:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+.faculty button:hover {
+    transform: scale(1.05);
+}
+
+.faculty button:hover:before {
+    transform: scale(1);
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 600px) {
+    .faculty {
+        max-width: 400px;
+        margin: 30px auto;
+        padding: 15px;
+    }
+    
+    .faculty button {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .faculty {
+        max-width: 300px;
+        margin: 20px auto;
+        padding: 10px;
+    }
+    
+    .faculty h1 {
+        font-size: 20px;
+    }
+    
+    .faculty button {
+        font-size: 14px;
+    }
+}
+
+@media print{
+  .tt{
+    display: none;
+  }
+}
+

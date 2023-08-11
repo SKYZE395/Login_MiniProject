@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  /* font-family: 'Architects Daughter', cursive; */
+  font-family: 'Oswald', sans-serif;
+  scroll-behavior: smooth;
+  font-size: 20px;
+}
+
+header ul li a:hover {
+  color: rgb(237, 158, 105);
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px 100px;
+  z-index: 1000;
+  align-items: top-center;
+  justify-content: space-between;
+  display: flex;
+  transition: 0.5s;
+  background-color: rgba(255, 255, 255, 0.6);
+  /* background-color: aliceblue; */
+}
+
+.tt_logo2 {
+  width: 230px;
+  /* Adjust the width as needed */
+  margin-left: 120px;
+}
+
+.tt_logo {
+  height: 80px;
+  width: 340px;
+  float: left;
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+}
+
+.tt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5%;
+  padding: 40px 100px;
+  z-index: 1000;
+  align-items: center;
+  justify-content: space-between;
+  background-size: cover;
+  display: flex;
+  transition: 0.5s;
+  background-color: rgba(255, 255, 255, 0.7);
+  /* background-color: aliceblue; */
+}
+
+header.sticky {
+  background: #bc7878;
+  padding: 20px 100px;
+  box-shadow: 0 5px 20px rgb(0, 0, 0, 0.1);
+}
+
+.container {
+  position: relative;
+  margin-top: 80px;
+}
+
+header .logo {
+  color: #a64320;
+  font-size: 26px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-family: 'Stick No Bills', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+header ul {
+  position: relative;
+  display: flex;
+}
+
+header ul li {
+  position: relative;
+  list-style: none;
+}
+
+header ul li a {
+  position: relative;
+  display: inline-block;
+  margin: 0px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #cf8806;
+  font-size: 18px;
+  text-shadow: 0.3px 0.3px 0.3px rgba(0, 0, 0, 0.5);
+}
+
+a {
+  text-decoration: none !important;
+  color: white;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: 600px;
+}
+
+#labtable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#labtable th {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#labtable tbody {
+  border: 1px solid #ccc;
+}
+
+#labtable td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#labtable td:first-child {
+  font-weight: 100;
+}
+
+#labtable tr:first-child td {
+  font-weight: 100;
+}
+
+#labtable tr:nth-child(2) td {
+  font-weight: 100;
+}
+
+#labtable tr:nth-child(odd) td {
+  background-color: #f9f9f9;
+}
+
+#labtable td {
+  background-color: #eeeff3;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  background-image: url(pic4.jpg);
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 600px) {
+  .faculty {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 15px;
+  }
+
+  .faculty button {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .faculty {
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  .faculty h1 {
+    font-size: 20px;
+  }
+
+  .faculty button {
+    font-size: 14px;
+  }
+}
+
+#labtable {
+  max-width: 100%;
+  overflow-x: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+button {
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: #f6a028;
+  color: #fff;
+  border: none;
+}
+#save{
+  margin: auto;
+  display: flex;
+  justify-items: center;
+}
+
+@media print {
+  .tt {
+    display: none;
+  }
+
+  body {
+    background-image: none;
+  }
+}
